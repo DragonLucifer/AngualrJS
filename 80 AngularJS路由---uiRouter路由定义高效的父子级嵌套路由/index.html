@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>uiRouter路由定义高效的父子级嵌套路由</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+    <script src="../libs/angular-ui-router.min.js"></script>
+</head>
+<body>
+<div ng-app="App">
+    <div ui-view></div><!--此时ui-view包含/home、/news、/games 进入链接页面后刷新这个html导致导航栏消失（导航栏应该一直存在）-->
+</div>
+<script>
+    /*
+     使用场景:功能导航栏中含有需要显示在不同界面的效果（比如登录、首页点击之后在不同的页面显示）
+     */
+    var app = angular.module('App', ['ui.router']);
+
+    app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/home');// 默认路由 重定向的url规则
+
+        // 定义路由规则
+        $stateProvider
+            .state('home', {
+                url: '/home',
+                templateUrl: 'view/home.html'// 使用templateUrl模板
+            })
+
+            // 重要
+            // 重要
+            // 重要
+            //home.news--先由顶级视图包含home（home.html中的内容一直显示），再由home里面的容器（视图）包含news
+            .state('home.news', {// 方法一:home.news表明进入home路由器里面的容器（视图）[视图的视图]---home.html必须有容器（视图）
+                url: '/news',
+                templateUrl: 'view/news.html'
+            })
+            .state('games', {
+                parent: 'home',// 方法二:添加路由配置项，指定父级
+                url: '/games',
+                templateUrl: 'view/games.html'
+            })
+            .state('login', {
+                url: '/login',
+                templateUrl: 'view/login.html'
+            })
+    }]);
+</script>
+</body>
+</html>

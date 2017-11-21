@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-model在表单中双向绑定实例分析</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <form action="data.php" method="post">
+        <!--双向数据绑定-->
+        <!--提交事件需要在input标签内写明name属性-->
+        <input type="text" name="title" ng-model="name"><!--ng-model会自动改变value属性值（所以在input标签内不用写value）-->
+        {{name}}
+        <input type="submit">
+    </form>
+</div>
+<!--ng-controller与script的位置没有必然联系-->
+<!--ng-controller所在范围内都能与viewModel（即scope）进行数据绑定（即在名为ctrl的控制器下scope属性以及方法可以在视图view中使用）-->
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.name = 'lijiabin';
+    }]);
+</script>
+</body>
+</html>

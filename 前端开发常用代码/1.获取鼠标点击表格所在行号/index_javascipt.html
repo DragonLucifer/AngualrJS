@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取鼠标点击表格所在行号---javascript方法</title>
+</head>
+<body onload="getIndex()">
+<table id="table_data" border="1" width="600" align="center">
+    <tr>
+        <td>[0,0]</td>
+        <td>[0,1]</td>
+    </tr>
+    <tr>
+        <td>[1,0]</td>
+        <td>[1,1]</td>
+    </tr>
+</table>
+<script>
+    function getIndex() {
+        var tab = document.getElementById('table_data');
+        var rows = tab.getElementsByTagName("tr");
+
+        // 给tr绑定click事件
+        for (var i in rows) {
+            rows[i].onclick = rowClick;
+        }
+    }
+    function rowClick(e) {
+        alert(this.rowIndex);// 显示所点击的行的索引
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>uiRouter链接上实例路由跳转方式</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+    <script src="../libs/angular-ui-router.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <!--
+        <a href="#/home">首页</a>// href对应的是url的值
+        <a href="#/lists">列表页</a>
+    -->
+    <a href="" ui-sref="home">首页</a><!--ui-sref对应的是.state的第一个参数-->
+    <a href="" ui-sref="lists">列表页</a>
+    <div ui-view>您访问的页面不存在</div>
+</div>
+<script>
+    var app = angular.module('App', ['ui.router']);
+
+    app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+        // otherwise()只接受一个参数，要么函数要么字符串，字符串必须为合法的url路由地址，函数则会在没有任何路径被匹配的时候被运行
+        $urlRouterProvider.otherwise('/index_home');// 默认路由 重定向的url规则
+
+        // 定义路由规则
+        $stateProvider
+            .state('default', {
+                url: '/index_home',
+                template: '<h1>uiRouter默认路由规则操作</h1>'// 可读性差 效率低
+            })
+            .state('home', {
+                url: '/home',
+                // templateUrl属性值是一个url路径,路径指向一个html模板,html模板会填充(或替换)指定内容
+                templateUrl: 'view/home.html'// 使用templateUrl模板
+            })
+            .state('lists', {
+                url: '/lists',
+                templateUrl: 'view/lists.html'
+            })
+    }]);
+
+    // 重要:路由是在控制器之上（具体业务）执行的
+    app.controller('ctrl', ['$scope', function ($scope) {
+    }]);
+</script>
+</body>
+</html>

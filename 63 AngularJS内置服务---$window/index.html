@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$window服务</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <!--对窗口进行操作可使用$window服务-->
+    <a href="" ng-click="get()">get</a>
+    <hr/>
+    {{message}}
+    <hr/>
+
+    <a href="" ng-click="getClientHeight()">获取内容高度</a>
+    内容高度是:{{clientHeight}}
+    <hr/>
+
+    <a href="" ng-click="getScrollHeight()">获取显示区域</a>
+    内容区域是:{{scrollHeight}}
+    <hr/>
+
+    <a href="" ng-click="prompt()">请输入内容</a>
+    您输入的内容是:{{content}}
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', '$window', function ($scope, $window) {
+        $scope.get = function () {
+            $window.alert(3);
+            // confirm()方法用于显示一个带有指定消息和确定（OK）及取消（Cancel）按钮的对话框
+            /*
+             confirm(message)
+             message  要在window上弹出的对话框中显示的纯文本（而非HTML文本）
+             如果用户点击确定按钮，则confirm()返回true。如果点击取消按钮，则confirm()返回false。
+             在用户点击确定按钮或取消按钮把对话框关闭之前，它将阻止用户对浏览器的所有输入。在调用confirm()时，将暂停对JavaScript代码的执行，在用户作出响应之前，不会执行下一条语句。
+             */
+            if ($window.confirm('确定操作吗')) {
+                $scope.message = 'Yes';
+            } else {
+                $scope.message = 'No';
+            }
+        };
+        // window.alert(3);
+
+        // 获取内容（body）高度
+        $scope.getClientHeight = function () {
+            $scope.clientHeight = $window.document.body.clientHeight;
+        };
+
+        // 获取显示区域
+        $scope.getScrollHeight = function () {
+            $scope.scrollHeight = $window.document.body.scrollHeight;
+        };
+
+        $scope.prompt = function () {
+            $scope.content = $window.prompt('请输入内容');
+        }
+    }]);
+</script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件处理指令</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <!--事件源=事件处理程序（即函数） 如onclick="run()"-->
+    <div onclick="run()">run</div>
+    <script>
+        function run() {
+            alert('hello world');
+        }
+    </script>
+    <br/>
+    <hr/>
+
+    <!--ng-click指令的事件处理程序需要写在ctrl控制器的scope下-->
+    <!--
+        语法：<element ng-click="expression"></element>
+        注意：所有HTML元素都支持该指令。
+        ng-click指令用于告诉AngularJS在鼠标鼠标HTML元素时需要执行的操作。
+        ng-click指令不会覆盖元素的原始onclick事件,鼠标双击时,ng-click表达式与原始的onclick事件将都会执行。
+    -->
+    <div ng-click="mouseClick()">事件</div><!--鼠标的单击事件-->
+    <br/>
+    <hr/>
+
+    <!--
+        语法：<element ng-dblclick="expression"></element>
+        注意：所有HTML元素都支持该指令。
+        ng-dblclick指令用于告诉AngularJS在鼠标鼠标HTML元素时需要执行的操作。
+        ng-dblclick指令不会覆盖元素的原始ondblclick事件,鼠标双击时,ng-dblclick表达式与原始的ondblclick事件将都会执行。
+    -->
+    <div ng-dblclick="mouseDoubleClick()">事件</div><!--鼠标的双击事件-->
+    <br/>
+    <hr/>
+
+    <!--
+        语法：<element ng-change="expression"></element>
+        注意：<input>,<select>,和<textarea>元素支持。
+        ng-change指令用于告诉AngularJS在HTML元素值改变时需要执行的操作。
+        ng-change指令需要搭配ng-model指令使用。
+        AngularJS ng-change指令指令不会覆盖原生的onchange事件,如果触发该事件，ng-change表达式与原生的onchange事件都会执行。
+        ng-change事件在值的每次改变时触发，它不需要等待一个完成的修改过程，或等待失去焦点的动作。
+        ng-change事件只针对输入框值的真实修改（<input>,<select>,和<textarea> 元素支持），而不是通过JavaScript来修改。
+    -->
+    <input ng-change="change()" ng-model="title"><!--输入框内容改变事件-->
+    {{data_change}}
+    <br/>
+    <hr/>
+
+    <!--
+        语法：<element ng-click="expression"></element>
+        注意：所有HTML元素都支持该指令。
+        ng-blur指令用于告诉AngularJS HTML元素在失去焦点时需要执行的表达式。
+        AngularJS中的ng-blur指令不会覆盖原生的onblur事件，如果触发该事件，ng-blur表达式与原生的onblur事件都会执行。
+    -->
+    <input ng-blur="blur()"><!--失去焦点事件-->
+    {{data_blur}}
+    <br/>
+    <hr/>
+
+    <!--
+        语法：<element ng-focus="expression"></element>
+        注意：<a>,<input>,<select>,<textarea>和window对象都支持该指令。
+        ng-focus指令用于告诉AngularJS在HTML元素获取焦点时需要执行的操作。
+        ng-focus指令不会覆盖元素的原始onfocus事件,事件触发时,ng-focus表达式与原始的onfocus事件将都会执行。
+    -->
+    <input ng-focus="focus()"><!--获取焦点事件-->
+    {{data_focus}}
+    <br/>
+    <hr/>
+
+    <!--
+        ng-keydown指令用于告诉AngularJS在指定HTML元素上按下按键时需要的操作。
+        ng-keydown指令不会覆盖元素的原生onkeydown事件,事件触发时，ng-keydown表达式与原生的onkeydown事件将都会执行。
+        按键敲击的事件顺序:keydown、keypress、keyup
+        <input>, <select>, <textarea>, 和其他可编辑元素支持该指令。
+    -->
+    <input ng-keydown="keydown()"><!--按下按键事件-->
+    {{data_keydown}}
+    <br/>
+    <hr/>
+
+    <!--
+        ng-keyup指令用于告诉AngularJS在指定 HTML元素上按键松开时需要的操作。
+        ng-keyup指令不会覆盖元素的原生onkeyup事件,事件触发时,ng-keyup表达式与原生的onkeyup事件将都会执行。
+        按键敲击的事件顺序:keydown、keypress、keyup
+        <input>, <select>, <textarea>, 和其他可编辑元素支持该指令。
+    -->
+    <input ng-keyup="keyup()"><!--按键松开事件-->
+    {{data_keyup}}
+    <br/>
+    <hr/>
+
+    <!--
+        ng-keypress指令用于告诉AngularJS在指定HTML元素上按下按键时需要的操作。
+        ng-keypress指令不会覆盖元素的原生onkeypress事件,事件触发时,ng-keypress表达式与原生的onkeypress事件将都会执行。
+        按键敲击的事件顺序:keydown、keypress、keyup
+        <input>, <select>, <textarea>, 和其他可编辑元素支持该指令。
+    -->
+    <input ng-keypress="keypress()"><!--按下按键事件-->
+    {{data_keypress}}
+    <br/>
+    <hr/>
+
+    <!--
+        语法：<element ng-mousedown="expression"></element>
+        注意：所有的HTML元素支持该指令。
+        ng-mousedown指令用于告诉AngularJS鼠标在指定的HTML元素上按下时要执行的操作。
+        ng-mousedown指令不会覆盖元素的原生onmousedown事件,事件触发时,ng-mousedown表达式与原生的onmousedown事件将都会执行。
+        鼠标点击执行的顺序:mousedown、mouseup、click
+    -->
+    <button ng-mousedown="mousedown()">mousedown</button><!--按下鼠标按键事件-->
+    {{data_mousedown}}
+    <br/>
+    <hr/>
+
+    <!--
+       语法：<element ng-mouseup="expression"></element>
+       注意：所有的HTML元素支持该指令。
+       ng-mouseup指令用于告诉AngularJS鼠标在指定的HTML元素上上松开鼠标按钮（点击完成）时要执行的操作。
+       ng-mouseup指令不会覆盖元素的原生onmouseup事件,事件触发时,ng-mouseup表达式与原生的onmouseup事件将都会执行。
+       鼠标点击执行的顺序:mousedown、mouseup、click
+    -->
+    <button ng-mouseup="mouseup()">mouseup</button><!--在元素上松开鼠标按键事件-->
+    {{data_mouseup}}
+    <br/>
+    <hr/>
+
+    <!--
+       语法：<element ng-mouseenter="expression"></element>
+       注意：所有的HTML元素支持该指令。
+       ng-mouseenter指令用于告诉AngularJS鼠标在指定的HTML元素穿过时要执行的操作。
+       ng-mouseenter指令不会覆盖元素的原生onmouseenter事件,事件触发时,ng-mouseenter表达式与原生的onmouseenter事件将都会执行。
+       鼠标点击执行的顺序:mousedown、mouseup、click
+    -->
+    <button ng-mouseenter="mouseenter()">mouseenter</button><!--鼠标指针穿过元素事件-->
+    {{data_mouseenter}}
+    <br/>
+    <hr/>
+
+    <!--
+      语法：<element ng-mouseleave="expression"></element>
+      注意：所有的HTML元素支持该指令。
+      ng-mouseleave指令用于告诉AngularJS鼠标在指定的HTML元素上移开时要执行的操作。
+      ng-mouseleave指令不会覆盖元素的原生onmouseleave事件,事件触发时,ng-mouseleave表达式与原生的onmouseleave事件将都会执行。
+      鼠标点击执行的顺序:mousedown、mouseup、click
+    -->
+    <button ng-mouseleave="mouseleave()">mouseleave</button><!--鼠标指针移开元素事件-->
+    {{data_mouseleave}}
+    <br/>
+    <hr/>
+
+    <!--
+     语法：<element ng-mousemove="expression"></element>
+     注意：所有的HTML元素支持该指令。
+     ng-mousemove指令用于告诉AngularJS鼠标在指定的HTML元素上移开时要执行的操作。
+     ng-mousemove指令不会覆盖元素的原生onmousemove事件,事件触发时,ng-mousemove表达式与原生的onmousemove事件将都会执行。
+     鼠标点击执行的顺序:mousedown、mouseup、click
+   -->
+    <button ng-mousemove="mousemove()">mousemove</button><!--鼠标指针在元素上移动事件-->
+    {{data_mousemove}}
+    <br/>
+    <hr/>
+
+    <!--
+     语法：<element ng-mouseover="expression"></element>
+     注意：所有的HTML元素支持该指令。
+     ng-mouseover指令用于告诉AngularJS鼠标在指定的HTML元素上移开时要执行的操作。
+     ng-mouseover指令不会覆盖元素的原生onmouseover事件,事件触发时,ng-mouseover表达式与原生的onmouseover事件将都会执行。
+     鼠标点击执行的顺序:mousedown、mouseup、click
+   -->
+    <button ng-mouseover="mouseover()">mouseover</button><!--鼠标指针移动到元素上事件-->
+    {{data_mouseover}}
+    <br/>
+    <hr/>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.data_mousedown = '';//data_mousedown初始化
+        $scope.data_mouseup = '';//data_mouseup初始化
+        $scope.data_mouseenter = '';//data_mouseenter初始化
+        $scope.data_mouseleave = '';//data_mouseleave初始化
+        $scope.data_mousemove = '';//data_mousemove初始化
+        $scope.data_mouseover = '';//data_mouseover初始化
+
+        $scope.show = function () {
+            alert('show()事件');
+        };
+
+        $scope.mouseClick = function () {
+            alert('mouseclick()事件');
+        };
+
+        $scope.mouseDoubleClick = function () {
+            alert('mouseDoubleClick()事件');
+        };
+
+        $scope.change = function () {
+            $scope.data_change = 'change'
+        };
+
+        $scope.blur = function () {
+            $scope.data_blur = 'blur';
+        };
+
+        $scope.focus = function () {
+            $scope.data_focus = 'focus';
+        };
+
+        $scope.keydown = function () {
+            $scope.data_keydown = 'keydown';
+        };
+
+        $scope.keyup = function () {
+            $scope.data_keyup = 'keyup';
+        };
+
+        $scope.keypress = function () {
+            $scope.data_keypress = "keypress"
+        };
+
+        $scope.mousedown = function () {
+            $scope.data_mousedown += 'mousedown ';
+        };
+
+        $scope.mouseup = function () {
+            $scope.data_mouseup += 'mouseup ';
+        };
+
+        $scope.mouseenter = function () {
+            $scope.data_mouseenter += 'mouseenter ';
+        };
+
+        $scope.mouseleave = function () {
+            $scope.data_mouseleave += 'mouseleave ';
+        };
+
+        $scope.mousemove = function () {
+            $scope.data_mousemove += 'mousemove ';
+        };
+
+        $scope.mouseover = function () {
+            $scope.data_mouseover += 'mouseover ';
+        }
+    }]);
+</script>
+</body>
+</html>

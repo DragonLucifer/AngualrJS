@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>声明模块与控制器规范与依赖注入分析</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body >
+<div ng-app="App" ng-controller="ctrl">
+    {{name}}
+</div>
+<script>
+    var app = angular.module('App', []);
+    // IOC将scope依赖注入
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.name = "lijiabin";
+    }]);
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-class动态改变样式类</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<style>
+    .red {
+        background-color: red;
+    }
+
+    .green {
+        background-color: green;
+    }
+
+    .lock {
+        background-color: red;
+    }
+
+    .color {
+        color: blue;
+    }
+</style>
+<!--ng-class指令能够动态改变样式类-->
+<!--ng-class指令能够动态改变样式类-->
+<div ng-app="App" ng-controller="ctrl">
+    <!--重要：ng-class 指令用于给 HTML 元素动态绑定一个或多个 CSS 类（即动态改变样式类）-->
+    <div ng-class="{red:true}"><!--{red:true}---通过对象绑定-->
+        ng-class动态改变样式类
+    </div>
+    <br/>
+    <hr>
+
+    <table border="1" width="600">
+        <tr>
+            <td>编号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+        </tr>
+
+        <!--ng-class指令可以写表达式，当ng-class指令的值为对象时，表达式返回布尔值，只有为true时lock类才会被添加-->
+        <!--语法：ng-class="{类名：表达式}" 注意：当ng-class指令的值为对象时勿忘{}-->
+        <tr ng-repeat="val in data" ng-class="{lock:val.status==0}">
+            <td>{{val.id}}</td>
+            <!--年龄大于等于24岁的用户姓名为绿色 此时只需改变用户姓名需要在{{val.name}}添加样式-->
+            <td ng-class="{color:val.age>=24}">{{val.name}}</td>
+            <td>{{val.age}}</td>
+        </tr>
+    </table>
+    <br/>
+    <hr>
+
+    <table border="1" width="600">
+        <tr>
+            <td>编号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+        </tr>
+        <!--
+            ng-class-even 指令用于为 HTML 元素动态的绑定一个或多个 CSS 类，但只作用于偶数行。
+            ng-class-even 指令需要与 ng-repeat 指令搭配使用。
+            ng-class-even 指令建议用在表格的样式渲染中，但是所有HTML元素都是支持的。
+        -->
+        <tr ng-repeat="val in data" ng-class-even="{red:true}">
+            <td>{{val.id}}</td>
+            <td>{{val.name}}</td>
+            <td>{{val.age}}</td>
+        </tr>
+    </table>
+    <br/>
+    <hr>
+
+    <table border="1" width="600">
+        <tr>
+            <td>编号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+        </tr>
+        <!--
+             ng-class-odd 指令用于为 HTML 元素动态的绑定一个或多个 CSS 类，但只作用于奇数行。
+             ng-class-odd 指令需要与 ng-repeat 指令搭配使用。
+             ng-class-odd 指令建议用在表格的样式渲染中，但是所有HTML元素都是支持的。
+         -->
+        <tr ng-repeat="val in data" ng-class-odd="{red:true}">
+            <td>{{val.id}}</td>
+            <td>{{val.name}}</td>
+            <td>{{val.age}}</td>
+        </tr>
+    </table>
+    <br/>
+    <hr>
+
+    <!--ng-class-odd&&ng-class-even结合使用-->
+    <table border="1" width="600">
+        <tr>
+            <td>编号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+        </tr>
+        <tr ng-repeat="val in data" ng-class-even="{green:true}" ng-class-odd="{red:true}">
+            <td>{{val.id}}</td>
+            <td>{{val.name}}</td>
+            <td>{{val.age}}</td>
+        </tr>
+    </table>
+    <br/>
+    <hr>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.data = [
+            {id: 1, name: 'lijiabin', age: 24, status: 1},
+            {id: 2, name: 'lidongxu', age: 25, status: 0},
+            {id: 3, name: 'liyang', age: 22, status: 1},
+            {id: 4, name: 'limingxuan', age: 24, status: 0}
+        ];
+    }]);
+</script>
+</body>
+</html>

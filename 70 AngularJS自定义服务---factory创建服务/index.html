@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>factory创建服务</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <table border="1" width="600">
+        <tr>
+            <td>Web</td>
+            <td>Url</td>
+        </tr>
+        <tr ng-repeat="val in data">
+            <td>{{val.name}}</td>
+            <td>{{val.url}}</td>
+        </tr>
+    </table>
+</div>
+<script>
+    var app = angular.module('App', []);
+    // 定义服务 单例（只有一个对象）
+    app.factory('dataServer', ['$http', function ($http) {
+        return {
+            // 方法一 不推荐
+            get: function (callback) {
+                // alert(3);
+                // 数据请求
+                $http({
+                    url: 'data.php'
+                }).then(function (response) {
+                    console.log(response);
+                    return response.data;// 错误 response局部变量存储于栈内，函数结束内容释放
+                    // callback(response);// 正确 使用回调函数 不建议使用
+                })
+            },
+
+            // 方法二 推荐
+            all: function () {
+                return $http({url: 'data_php'});// 返回值为对象
+            }
+        };
+    }]);
+    // 依赖注入自定义服务
+    app.controller('ctrl', ['$scope', 'dataServer', function ($scope, dataServer) {
+        // 方法一
+        dataServer.get();
+        $scope.data = dataServer.get();// 错误 通过return无法将数据返回
+        /*当使用回调函数时
+        dataServer.get(function (response) {
+            $scope.data = response.data;
+        });*/
+
+        // 方法二
+        dataServer.all().then(function (response) {
+            $scope.data = response.data;
+        })
+    }]);
+</script>
+</body>
+</html>

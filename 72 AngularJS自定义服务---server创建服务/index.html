@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>server创建服务</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <table border="1" width="600">
+        <tr>
+            <td>Web</td>
+            <td>Url</td>
+        </tr>
+        <tr ng-repeat="val in data">
+            <td>{{val.name}}</td>
+            <td>{{val.url}}</td>
+        </tr>
+    </table>
+</div>
+<script>
+    /*
+    //原生JS
+    function a() {
+        this.name = 'lijiabin';
+    }
+    var obj = new a();// a充当两种角色 函数与对象
+    console.log(obj.name);
+    */
+    var app = angular.module('App', []);
+    // 定义服务 单例（只有一个对象）
+    app.service('dataServer', ['$http', function ($http) {
+        this.get = function () {
+            return $http({method: 'get', url: 'data.php'}).then(function (respnse) {
+                return respnse.data;
+            })
+        }
+    }]);
+
+    /*
+    function callback($http) {
+        this.get = function () {
+            return $http({method: 'get', url: 'data.php'}).then(function (respnse) {
+                return respnse.data;
+            })
+        }
+    }
+    app.service('dataServer', ['$http', callback]);
+    */
+    // 依赖注入自定义服务
+    app.controller('ctrl', ['$scope', 'dataServer', function ($scope, dataServer) {
+        dataServer.get().then(function (response) {
+            $scope.data = response;
+        })
+    }]);
+</script>
+</body>
+</html>

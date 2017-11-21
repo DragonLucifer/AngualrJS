@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表达式与ng-bind及ng-cloak解决闪屏问题</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<style>
+    .ng-cloak {
+        display: none;
+    }
+</style>
+<!--
+    步骤一：解析标准的HTML元素（如标签等、包括css、js），将非HTML元素进行跳过。
+（ng-。。。指令由AngularJS再次处理）在解析HTML元素时显示css样式，即在默认情况下样式设置为display是空白的
+    步骤二：解析AngularJS元素，由于ng-cloak指令（作用：用于在 AngularJS 应用在加载时防止 AngularJS 代码未加载完（如：{{}}）而出现问题
+（如：在加载过程中用户看到{{name}}）将包含该指令的元素/标签再次显示出来
+注意：ng-cloak 指令是为了防止AngularJS 应用在加载时，文档可能会由于AngularJS 代码未加载完而出现显示 AngularJS 代码，进而会有闪烁的效果。
+-->
+<body ng-app="App" ng-controller="ctrl" ng-cloak class="ng-cloak">
+<div>
+    <!--表达式-->
+    {{name+' 24'}} www.baidu.com<br/>
+    {{num*3}}
+
+    <!--<hr>被水平线分隔的标题和段落-->
+    <!--完全可以字符串连接 但可读性差-->
+    <hr ng-bind="name+' 24'">
+</div>
+</body>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.name = "lijiabin";
+        $scope.num = 2;
+    }]);
+</script>
+</html>
+<!--
+    总结：当含有大量字符串（特别是内含有双引号）需要显示时用{{}}表达式的方式，否则使用ng-bind
+-->

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取鼠标点击表格所在行号---javascript方法</title>
+    <script src="../../libs/jquery.min.js"></script>
+</head>
+<body>
+<table id="table_data" border="1" width="600" align="center">
+    <tr>
+        <td>[0,0]</td>
+        <td>[0,1]</td>
+    </tr>
+    <tr>
+        <td>[1,0]</td>
+        <td>[1,1]</td>
+    </tr>
+</table>
+<script>
+    $(document).ready(function () {
+        $("#table_data > tbody> tr").click(function () {
+            alert(this.rowIndex);
+        });
+    });
+</script>
+</body>
+</html>

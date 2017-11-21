@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大小写转换&对象深拷贝</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        console.log(angular.version);//查看当前AngularJS的版本号
+        console.log(angular.lowercase("ABCDEFG"));//将字符串转换为小写形式
+        console.log(angular.uppercase("abcdefg"));//将字符串转换为大写形式
+        var obj = {name: 'lijiabin'};
+        var obj_copy = obj;//址传递 obj与obj_copy指向同一块存储空间
+        obj_copy.name = "lidongxu";
+        console.log(obj);//显示lidongxu
+        //原因：在AngularJS中的模型数据可能是基本类型、数组或Javascript对象，但是都属于AngularJS作用域对象（Object）
+        //AngularJS通过作用域来保持数据模型与视图界面UI的双向同步。一旦模型状态发生改变，AngularJS会立即刷新反映在视图界面中，反之亦然。
+
+        angular.copy(obj, obj_copy);
+        obj_copy.name = "lidongxu";
+        console.log(obj);//显示lijiabin
+        //原因：angular.copy(obj,obj_copy);深拷贝对象或数组 重新分配一块同样大小的存储空间，由obj_copy指向。两块空间独立，互不干扰
+    }]);
+</script>
+</body>
+</html>

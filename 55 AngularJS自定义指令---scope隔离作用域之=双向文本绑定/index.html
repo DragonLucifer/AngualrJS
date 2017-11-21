@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scope隔离作用域之=双向文本绑定</title>
+    <script src="../libs/angular.min.js"></script>
+    <link rel="stylesheet" href="../libs/bootstrap.min.css">
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <input ng-model="color" type="text"><!--控制器属性值改变影响指令属性值改变-->
+    <div my-directive font-color="color"></div>
+    <!--当scope: {color: '@fontColor'}时font-color="color"无效
+        <div my-directive="" font-color="color" class="ng-binding ng-isolate-scope">color
+            <span style="color:color">scope</span>
+        </div>
+        解决方法:scope: {color: '=fontColor'}
+    -->
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.color = 'green';
+    }]);
+    app.directive('myDirective', [function () {
+        return {
+            restrict: 'EA',
+            template: '{{color}} <span style="color:{{color}}">scope</span><input type="text" ng-model="color">',// 指令属性值改变影响指令属性值改变
+            // scope隔离作用域--=双向文本绑定
+            /*双向绑定赋予AngularJS孤立作用域与外界最为自由的双向数据通信功能。在双向绑定模式下，孤立作用域能够直接读写父作用域中的属性和数据。
+             双向绑定也必须在父作用域的HTML中设定属性节点来绑定，容易引起数据上的混乱。
+             */
+            // = 直接取控制器中变量值赋给指令中color属性
+            scope: {color: '=fontColor'}
+        }
+    }]);
+</script>
+</body>
+</html>

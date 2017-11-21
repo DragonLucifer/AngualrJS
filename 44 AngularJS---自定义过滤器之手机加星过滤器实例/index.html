@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义过滤器之手机加星过滤器实例</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    位数:<input type="text" ng-model="number">{{number}}
+    <table border="1" width="600">
+        <tr>
+            <td style="text-align: center">编号<span class="caret"></span></td>
+            <td style="text-align: center">姓名<span class="caret"></span></td>
+            <td style="text-align: center">手机号<span class="caret"></span></td>
+        </tr>
+        <tr ng-repeat="(key,value) in data">
+            <td style="text-align: center">{{value.id}}</td>
+            <td style="text-align: center">{{value.name}}</td>
+            <td style="text-align: center">{{value.mobile|truncate:number}}</td>
+        </tr>
+    </table>
+</div>
+<script>
+    var app = angular.module('App', []);
+    // 自定义过滤器
+    app.filter('truncate', function () {
+        return function (mobile, length) {
+            console.log(length);
+            /*当用户未指定mobile中*的位数时（即truncate无参数）length值为undefined，默认4位。
+             length = length ? length : 4;
+             */
+            // 返回值为钱length位显示数字，后11-length位显示*
+            // 通过字符串拼接方式
+            return mobile.substr(0, 11 - length) + new String('*').repeat(length);
+        };
+    });
+    app.controller('ctrl', ['$scope', '$filter', function ($scope, $filter) {
+        $scope.number = 0;
+        $scope.data = [
+            {id: 1, name: 'lijiabin', mobile: '13895720523'},
+            {id: 2, name: 'luxueju', mobile: '13613603039'}
+        ];
+    }]);
+</script>
+</body>
+</html>

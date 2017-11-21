@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>uiRouter路由定义超灵活的嵌套路由</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+    <script src="../libs/angular-ui-router.min.js"></script>
+</head>
+<body>
+<style>
+    * {
+        padding: 0;
+        margin: 0
+    }
+
+    ul, ol, li {
+        list-style: none
+    }
+
+    /*css3选择器*/
+    div[ui-view=top] {
+        background-color: #46b8da;
+        border-bottom: solid 3px #999
+    }
+
+    div[ui-view=left] {
+        width: 200px;
+        border: solid 1px red;
+        float: left;
+    }
+
+    div[ui-view=right] {
+        position: absolute;
+        left: 200px;
+        right: 0;
+        border: solid 1px red;
+    }
+</style>
+<div ng-app="App">
+    <div ui-view="top"></div>
+    <div ui-view="left"></div>
+    <div ui-view="right"></div>
+</div>
+<script>
+    /*
+     使用场景:功能导航栏中含有需要显示在不同界面的效果（比如登录、首页点击之后在不同的页面显示）
+     */
+    var app = angular.module('App', ['ui.router']);
+
+    app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/my');// 默认路由 重定向的url规则
+
+        // 定义路由规则
+        $stateProvider
+        // my 我的
+            .state('my', {
+                url: '/my',
+                // 一处改变影响多个视图（比如点击导航栏中的不同功能，left与right区域内容均发生改变
+                views: {
+                    top: {
+                        templateUrl: 'view/top.html'
+                    },
+                    left: {
+                        templateUrl: 'view/my.html'
+                    },
+                    right: {
+                        templateUrl: 'view/about.html'
+                    }
+                }
+            })
+            .state('video', {
+                url: '/video',
+                // 一处改变影响多个视图（比如点击导航栏中的不同功能，left与right区域内容均发生改变
+                views: {
+                    top: {
+                        templateUrl: 'view/top.html'
+                    },
+                    left: {
+                        templateUrl: 'view/video.html'
+                    },
+                    right: {
+                        templateUrl: 'view/video_list.html'
+                    }
+                }
+            })
+    }]);
+</script>
+</body>
+</html>

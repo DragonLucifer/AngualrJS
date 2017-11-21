@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$scope函数之$watch监听模型(Model)的变化</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    标题:<input type="text" ng-model="title">{{error}}
+    标题:<input type="text" ng-model="news.title">{{error}}
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.title = '';
+        $scope.news = {title: ''};
+        /*$watch(watchExpression, listener, objectEquality)
+         1.watchExpression:监听对象（即属性）
+         2.listener:当watchExpression变化时会被调用的函数或者表达式,它接收3个参数：newValue(新值), oldValue(旧值), scope(作用域的引用)
+         3.objectEquality：是否深度监听，如果设置为true,它告诉Angular检查所监控的对象中每一个属性的变化. 如果你希望监控数组的个别元素或者对象的属性而不是一个普通的值, 那么你应该使用它
+         */
+        // 监听变量title
+        $scope.$watch('title', function (newValue, oldValue) {
+            console.log(newValue);// 输出用户在表单内输入的新值
+            $scope.error = newValue.length > 5 ? '标题长度不能超过5位' : '';
+        });
+
+        // 监听对象中的属性（字段）
+        $scope.$watch('news', function (newValue, oldValue) {
+            console.log(newValue);// 输出用户在表单内输入的新值
+            // 此时传入进来的newValue、oldValue均为对象
+            $scope.error = newValue.title.length > 5 ? '标题长度不能超过5位' : '';
+        }, true);
+        // 注意:监听对象中属性的属性值时，函数参数添加true
+    }]);
+</script>
+</body>
+</html>

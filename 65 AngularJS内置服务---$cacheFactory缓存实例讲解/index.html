@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$cacheFactory的缓存实例讲解</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    {{data}}
+</div>
+<script>
+    var app = angular.module('App', []);
+    /*
+     $cacheFactory用于生成一个用来存储缓存对象的服务，并且提供对对象的访问。注意：当页面刷新时数据清除（类似于session）
+     （1）put(key,value);在缓存对象中插入一个键值对(key,value)。
+     （2）get(key);在缓存对象中通过指定key获取对应的值。
+     （3）romove(key);在缓存对象中通过指定key删除对应的值。
+     （4）removeAll();删除缓存对象中所有的键值对。
+     （5）destroy();销毁这个缓存对象。
+     （6）info();获取缓存对象信息（id，size）。
+     注意：key：string类型，缓存对象中的值名称。
+     value：所有类型，缓存对象中的值。
+     */
+    app.controller('ctrl', ['$scope', '$cacheFactory', function ($scope, $cacheFactory) {
+        var obj = $cacheFactory('website');// 定义存储空间
+        obj.put('web', {name: 'Baidu', url: 'www.baidu.com'});
+        obj.put('user', {name: 'lijiabin', age: 24});
+        console.log(obj.get('web'));// 输出结果:Object {name: "Baidu", url: "www.baidu.com"}
+        console.log(obj.get('web').url);// 输出结果www.baidu.com
+        $scope.data = obj.get('web').name;
+
+        obj.remove('web');
+        console.log(obj.get('web'));// 输出结果:undefined
+        obj.removeAll();// 全部删除
+
+        obj.destroy();// 释放存储空间
+    }]);
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-selected&ng-disabled&ng-readonly</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<style>
+    input[readonly] {
+        background-color: #f3f3f3;
+        border: solid 1px #aaaaaa;
+    }
+</style>
+<div ng-app="App" ng-controller="ctrl">
+    性别：<select ng-model="user.sex">
+    <option value="">选择性别</option>
+    <!--
+        ng-selected指令用于设置<select>列表中的<option> 元素的 selected 属性。
+        ng-selected属性的表达式返回true则选项被选中。用于动态设置select的默认selected
+    -->
+    <option ng-value="1" ng-selected="user.sex==1">男</option><!--当user.sex为1时，该选项被选中-->
+    <option ng-value="2" ng-selected="user.sex==2">女</option><!--当user.sex为2时，该选项被选中-->
+</select>
+
+    <!--当用户点击男或者女的单选框时，会自动对$scope进行赋值上user.sex属性 值（ng-value）为1/2-->
+    <!--此时option也会进行变化 当选择男或者女时user.sex的值发生变化，option内的ng-selected即时生效与之发生变化（值匹配成功）-->
+    <input type="radio" ng-model="user.sex" ng-value="1">男
+    <input type="radio" ng-model="user.sex" ng-value="2">女
+    <br/>
+    <hr/>
+
+    <!--copyright未初始化时为false-->
+    <input type="checkbox" ng-model="copyright">接受协议
+    <br/>
+    <!--如果 ng-disabled 中的表达式返回 true 则该标签元素将被禁用，反之可用-->
+    <input type="submit" ng-disabled="!copyright">
+    <br/>
+    <hr/>
+
+    <form action="data.php" method="post">
+        <!--readonly不可以修改内容，但可以提交-->
+        <input name="readonly" type="text" readonly="readonly" value="readonly"><br/>
+        <!--disabled不可以修改内容也不可以提交-->
+        <input name="disabled" type="text" disabled="disabled" value="disabled"><br/>
+        <input type="submit">
+    </form>
+    <hr/>
+    年龄：<input type="text" ng-model="user.age"><br/>
+    <!--当用户uid属性值存在时，邮箱字段不可编辑-->
+    邮箱：<input type="email" ng-model="user.email" ng-readonly="user.uid"><br/>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        // 此处数据应为通过异步请求或者php分配
+        $scope.user = {age: 33, uid: 1, email: '840877228@qq.com'};
+    }]);
+</script>
+</body>
+</html>

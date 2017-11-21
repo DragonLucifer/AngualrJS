@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令中link属性说明</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+</head>
+<body>
+<div ng-app="App">
+    <my-directive title="自定义指令属性之link" bg-color="red" font-color="green"></my-directive>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.directive('myDirective', [function () {
+        return {
+            restrict: 'E',
+            // 单向文本绑定
+            scope: {
+                title: '@'
+            },
+            // scope:指令的作用域
+            // elem:标签元素（指的是<my-directive></my-directive>）
+            // attr：属性
+            // 重要：对DOM元素进行具体操作应放在link中
+            link: function (scope, elem, attr) {
+                /*
+                 $attr:Object
+                 bgColor:"bg-color"
+                 fontColor:"font-color"
+                 title:"title"
+                 */
+                console.log(attr);//$attr: Object, $$element: R(1), title: "自定义指令属性之link", bgColor: "red", fontColor: "green"
+                $(elem).css({backgroundColor: attr['bgColor'], color: attr['fontColor']}).html(scope.title);//不是attr[bg-color]
+            }
+        }
+    }]);
+</script>
+</body>
+</html>

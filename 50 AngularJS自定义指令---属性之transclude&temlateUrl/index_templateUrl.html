@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令中templateUrl属性说明</title>
+    <script src="../libs/angular.min.js"></script>
+    <link rel="stylesheet" href="../libs/bootstrap.min.css">
+</head>
+<body>
+<div ng-app="App">
+    <div my-directive>templateUrl属性详解</div>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.directive('myDirective', [function () {
+        return {
+            restrict: 'AE',
+            // 当replace属性设置为true时,模板内容必须是被一个大的标签所包含???????
+            replace: true,
+            // templateUrl的相对路径是现对于app主页面（即index_templateUrl）的，因为template使用js来加载的
+            // templateUrl可以设置为一个页面的相对路径,尽量做到自定义指令名字与HTML文件名相同。
+            templateUrl: 'view/myDirective.html'
+        }
+    }]);
+</script>
+</body>
+</html>

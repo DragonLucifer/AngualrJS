@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令中transclude属性说明</title>
+    <script src="../libs/angular.min.js"></script>
+    <link rel="stylesheet" href="../libs/bootstrap.min.css">
+</head>
+<body>
+<div ng-app="App">
+    <!--保留"transclude属性详解"-->
+    <div my-directive>transclude属性详解</div>
+    <!--
+        <div my-directive="">
+            <h1>这是自定义指令<div ng-transclude=""><span class="ng-scope">transclude属性详解</span></div></h1>
+        </div>
+    -->
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.directive('myDirective', [function () {
+        return {
+            restrict: 'EA',
+            // 此时将自定义指令内容"transclude属性详解"赋给ng-transclude指令（使用指令的元素内部的所有内容都会被保存起来）
+            /*
+             启用transclude以后,有两个地方会发生变化:
+             ①使用指令的元素内部的所有内容都会被保存起来
+             ②在指令的模板中,元素可以添加ng-transclude属性,添加了这个属性的元素,会被刚才的内容所填充.
+             */
+            template: '<h1>这是自定义指令<div ng-transclude=""></div></h1>',
+            transclude: true
+        }
+    }]);
+</script>
+</body>
+</html>

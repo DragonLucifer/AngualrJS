@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>json数据转换与本地存储&$scope数据序列化提交至后台</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    {{data}}
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        /*
+         单引号与双引号的区别：都适用于字符串
+         1.单引号的执行效率比双引号快
+         2.双引号可以使用转义字符
+         */
+        $scope.data = {name: 'lijiabin'};
+        console.log($scope.data.name);
+
+        //打开Chrome，Fn+F12找到Application，查看LocalStorage
+        //localStorage.setItem('data', $scope.data);// 错误 在Local Storage存储并显示为[Object,Object]（将数据作为对象Object存储到本地，无法存储/显示属性值）
+
+        //angular.toJson()能把对象序列化为json字符串
+        /*angular.toJson(obj, pretty);
+         obj 是想要转换的对象，
+         pretty 可以调节格式化的样式，按照API的介绍这个是空格的个数
+         */
+        localStorage.setItem('data', angular.toJson($scope.data));//正确 在Local Storage存储并显示为{"name":"lijiabin"}
+    }]);
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter过滤器之lowercase&uppercase</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <!--lowercase过滤器将字符串格式化为小写-->
+    {{name|lowercase}}<!--输出结果：lijiabin-->
+
+    <!--uppercase过滤器将字符串格式化为大写-->
+    {{name|uppercase}}<!--输出结果：LIJIABIN-->
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.name = "LiJiaBin";
+    }]);
+</script>
+</body>
+</html>

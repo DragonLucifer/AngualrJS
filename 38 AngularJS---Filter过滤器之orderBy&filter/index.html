@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter过滤器之orderBy&filter</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <!--orderBy 排序 注意：任何字段均可排序-->
+    {{data|orderBy:'id':false}}<br/><!--id 升序排列-->
+    {{data|orderBy:'id':true}}<br/><!--id 降序排列-->
+
+    <!--filter 过滤（匹配子串）-->
+    {{data|filter:'1'}}<br/><!--在所有属性（字段）中找属性值含有1的数据 输出结果:{id: 1, click: 100, title: 'HRBU'}-->
+    {{data|filter:'H':true}}<br/><!--true表示完全匹配 输出结果为：{}-->
+    <!--{{data|filter:{title:'HRBUST'}}}？？？？？？-->
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.data = [
+            {id: 1, click: 100, title: 'HRBU'},
+            {id: 2, click: 200, title: 'HRBUST'},
+            {id: 3, click: 300, title: 'HIT'}
+        ];
+    }]);
+</script>
+</body>
+</html>
+<!--
+filter 参数 类型 解释
+array	array	目标数组
+
+expression	string，object，function	用于筛选目标数组，
+1.当是字符串时，用于匹配目标array的内容，目标数组里所有带有字符串的数组及对象将会与此字符串进行匹配，matched的将会返回。嵌套结构的数据也会进行匹配，但是带有’!’前缀的将会忽略。
+2.当是对象时，用于过滤array数组的特定属性。例如，{name：”M”,phone:”1”}将会返回带有name值为M和phone值为1的array项。只匹配属性名可用（举例{$:’text’}）来选取带有text属性的对象及嵌套对象。带有‘！’前缀的将会忽略，例如{name:”!M”},将会返回一个数组，包括不含M值得name属性。
+3.如果是一个function（value,index,array）,此函数用于重写过滤器，可以根据index及value值来自由过滤。
+comparator	function（actual,expected），true，false	这个参数用来配置匹配的规则，
+
+1.当它是function（act，exp）函数的时候，将会把期望值和实际值哪来比较，并且通过的一定的规则，如果通过则返回true，宣布matched。
+2.当他是true的时候，值得是function(actual, expected) { return angular.equals(actual, expected)}，也就是必须完全匹配才返回true。
+3.当它是false的时候，它会寻找一个substring的match，及不必完全匹配，像上边栗子中包含对应文字就会matched。默认是false
+-->

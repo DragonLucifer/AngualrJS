@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>json数据转换与本地存储&$scope数据序列化提交至后台</title>
+    <script src="../libs/jquery.min.js"></script>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <!--ng-submit  $http-->
+    <form method="post" action="">
+        标题：<input type="text" name="title" id="title" ng-model="field.title"><br/>
+        点击数：<input type="text" name="click" id="click" ng-model="field.click"><br/>
+        <textarea name="data" id="data" cols="30" rows="10"></textarea>
+        <input type="submit">
+    </form>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.field = {title: '', click: 100};
+        $('form').submit(function () {
+            alert("提交");
+            // 将表单数据汇总
+            $("[name='data']").val(angular.toJson($scope.field));// 将$scope.field里的数据写入name为data的控件中
+            return false;// 无动作
+        });
+    }]);
+</script>
+</body>
+</html>

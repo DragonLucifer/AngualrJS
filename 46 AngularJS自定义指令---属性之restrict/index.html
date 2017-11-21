@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令中restrict属性说明</title>
+    <script src="../libs/angular.min.js"></script>
+    <link rel="stylesheet" href="../libs/bootstrap.min.css">
+</head>
+<body>
+<div ng-app="App">
+    <!--
+        E-元素名称：<my-directive></my-directive>
+        A-属性名：<div my-directive=”exp”></div>
+        C-class名：<div class=”my-directive:exp;”></div>
+    -->
+    <!--属性-->
+    <div my-directive></div>
+    <hr/>
+
+    <!--在HTML中my-directive对应AngularJS中myDirective自定义指令-->
+    <!--重要-->
+    <!--重要-->
+    <!--重要-->
+    <!--元素-->
+    <my-directive></my-directive><!--<myDirective></myDirective>出错-->
+    <hr/>
+
+    <!--类-->
+    <div class="myDirective"></div><!--不推荐 class充当自定义指令和样式表 可读性差-->
+
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.directive('myDirective', [function () {
+        // AngularJs自定义指令时，要求返回一个指令定义对象（Directive Definition Object），该对象可以声明若干属性和方法。
+        return {
+            // 可选值包括：E（元素）A（属性）C（类名）
+            // 注意：混合使用如:EA，表示既可以作为E也可以作用A。
+            restrict: 'AEC',// 指令的表现形式 A--attr E--element C-class
+            template: '这是自定义指令'
+        }
+    }]);
+</script>
+</body>
+</html>

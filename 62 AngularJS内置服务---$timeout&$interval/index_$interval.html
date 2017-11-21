@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$interval定时器</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    {{name}}
+    <hr/>
+    {{id}}
+</div>
+<script>
+    var app = angular.module('App', []);
+
+    /*
+     $interval(fn,delay,[count],[invokeApply],[Pass]);
+     fn:一个将被反复执行的函数。
+     delay：每次调用的间隔毫秒数值。
+     count：循环次数的数值，如果没设置，则无限制循环。
+     invokeApply：如果设置为false，则避开脏值检查，否则将调用$apply。
+     Pass：函数的附加参数。
+     */
+
+    // AngularJS内置服务
+    // 注意:将服务依赖注入到控制器中,服务于控制器
+    app.controller('ctrl', ['$scope', '$interval', function ($scope, $interval) {
+        $scope.name = 'lijiabin';
+        $scope.id = 0;
+        var timeID = $interval(function () {
+            $scope.name = 'lidongxu';
+            $scope.id++;
+        }, 1000);
+        // 每隔 1s执行函数（反复不断的执行函数）
+
+        $interval.cancel(timeID);// 取消定时服务（每一个定时器都有唯一的ID）
+    }]);
+</script>
+</body>
+</html>

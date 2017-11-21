@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令中template函数式操作实例讲解</title>
+    <script src="../libs/angular.min.js"></script>
+    <link rel="stylesheet" href="../libs/bootstrap.min.css">
+    <script src="../libs/jquery.min.js"></script>
+</head>
+<body>
+<div ng-app="App">
+    <div my-directive color="red">自定义指令</div>
+
+    <!--自定义指令的效果如下-->
+    <!--
+        <div my-directive="" color="red">
+            <span style="color:red">自定义指令</span>
+        </div>
+    -->
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.directive('myDirective', [function () {
+        return {
+            restrict: 'AEC',
+            template: function (elem, attr) {//elem--div attr--color
+                console.log(elem);// $$element: R(1); 0:div; length:1
+                console.log(attr);// $attr:Object; color:"color"; myDirective:"my-directive"
+                // attr为对象，使用其某个属性的属性值:attr['属性名称']
+                return "<span style='color:" + attr['color'] + "'>" + elem.html() + "</span>";// 小功能适用 否则HTML代码量过大
+            }
+        }
+    }]);
+</script>
+</body>
+</html>

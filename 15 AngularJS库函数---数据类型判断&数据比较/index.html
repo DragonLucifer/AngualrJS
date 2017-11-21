@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型判断&数据比较</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    {{data}}
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        /*angular.isArray(value);
+         value	*	需要判断的值
+         功能：判断参数是否为数组
+         返回值：true/false
+         */
+        console.log(angular.isArray([]));// 判断参数是否为数组 输出结果为true
+        console.log(angular.isArray({}));// 输出结果为false
+
+        /*angular.isDate(value);
+         value	*	需要判断的值
+         功能：判断参数是否是时间类型
+         返回值：true/false
+         */
+        console.log(angular.isDate(new Date()));// 判断参数是否是时间类型
+
+        /*angular.isDefined(value);
+         value	*	需要判断的值
+         功能：判断参数是否定义引用
+         返回值：true/false
+         */
+        var data;// 注意：data为未初始化数值的变量
+        console.log(data);// 此处输出结果为undefined
+        console.log(angular.isDefined(data));// 判断参数是否定义引用 输出结果为false
+        console.log(angular.isUndefined(data));// 判断参数是否未定义引用 输出结果为true
+
+        /*angular.isFunction(value);
+         value	*	需要判断的值
+         功能：判断参数是否为函数
+         返回值：true/false
+         */
+        console.log(angular.isFunction(function () {
+        }));// 判断参数是否为函数
+
+        /*angular.isNumber(value);
+         value	*	需要判断的值
+         功能：判断参数是否为数字
+         返回值：true/false
+         */
+        var value_isNumber = 'a';
+        console.log(angular.isNumber(value_isNumber));// 判断参数是否为数字 输出结果为false
+
+        /*angular.isString(value);
+         value	*	需要判断的值
+         功能：判断参数是否为字符串
+         返回值：true/false
+         */
+        var value_isString = 'a';
+        console.log(angular.isString(value_isString));// 判断参数是否为字符串 输出结果为true
+
+        /*angular.isObject(value);
+         value	*	需要判断的值
+         功能：判断参数是否为对象
+         返回值：true/false
+         */
+        var value_object = {};// {}表示对象
+        console.log(angular.isObject(value_object));// 判断参数是否为对象 输出结果为true
+        // 注意：AngularJS中null不是对象，数组是对象
+        var value_array = [];// []表示对象
+        console.log(angular.isObject(value_array));// 输出结果为true
+
+        /*angular.isElement(value);
+         value	*	需要判断的值
+         功能：判断参数是否为Dom元素（标签元素或者封装的jQuery元素）
+         返回值：true/false
+         */
+        var value_element = '';
+        console.log(angular.isElement(value_element));// 判断参数是否为（标签）元素 输出结果为false
+        // getElementsByTagName是通过查找整个 HTML 文档中的任何 HTML 元素，传回指定名称的元素集合,通过.item确定查找元素（传递给 getElementsByTagName() 方法的字符串可以不区分大小写）
+        var value_htmlElement = document.getElementsByTagName('body').item(0);
+        console.log(angular.isElement(value_htmlElement));
+
+        /*angular.isElement(value1，value2);
+         value1、value2 	*	需要判断的值
+         功能：比较两个对象/值是否向相等
+         返回值：true/false
+         */
+        var value_val1 = 1;
+        var value_val2 = 1;
+        console.log(angular.equals(value_val1, value_val2));// 比较两个对象/值是否向相等 输出结果为true
+        // 注意：支持值类型、正则表达式、数组和对象
+        console.log(angular.equals({name: 2}, {name: 3}));// 输出结果为false
+    }]);
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>templateUrl</title>
+</head>
+<body>
+<!--此文件应由外部协议打开，而不是本地协议-->
+<!--This is a html file of templateUrl错误 文本节点无法替换标签-->
+<div>
+    <table border="1" width="600">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+        </tr>
+        <tr ng-repeat="(key,value) in data">
+            <td>{{value.id}}</td>
+            <td>{{value.name}}</td>
+        </tr>
+    </table>
+</div>
+<!--{{name}}-->
+<!--当自定义指令中replace属性为true时，需要将文本放置在标签中，否则报错-->
+<!--
+    replace：true
+    <div>This is a html file of templateUrl</div>
+
+    replace:false--是否有标签都可以
+    This is a html file of templateUrl
+    &&
+    <div>This is a html file of templateUrl</div>
+-->
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scope隔离作用域之@单向文本绑定</title>
+    <script src="../libs/angular.min.js"></script>
+    <link rel="stylesheet" href="../libs/bootstrap.min.css">
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <div my-directive font-color="red"></div>
+    <hr/>
+    <input type="text" ng-model="color">
+    <div my-directive font-color="{{color}}"></div><!--{{color}}值为控制器中的color属性值-->
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.color = 'green';
+    }]);
+    app.directive('myDirective', [function () {
+        return {
+            restrict: 'EA',
+            template: '{{color}} <span style="color:{{color}}">scope</span>',// {{color}}值为scope中的color属性值
+            // scope隔离作用域--@单向文本绑定
+            /* 这是AngularJS独立作用域与外界父作用域进行数据通信中最简单的一种，绑定的对象只能是父作用域中的字符串值，并且为单向只读引用，
+             无法对父作用域中的字符串值进行修改，此外，这个字符串还必须在父作用域的HTML节点中以attr（属性）的方式声明。
+             使用这种绑定方式时，需要在directive的scope属性中明确指定引用父作用域中的HTML字符串属性，否则会抛异常
+             */
+            scope: {color: '@fontColor'}// @fontColor中的'fontColor'指的是标签<div>中的fontColor属性，值为red
+            // scope可以看做是管理指令中的变量的容器
+            /*
+             控制器中的变量color与指令中scope容器中的变量color隔离
+             重要：font-color="{{color}}"---可以通过属性（font-color:div标签中的属性）间接来获取控制器变量
+             */
+        }
+    }]);
+</script>
+</body>
+</html>

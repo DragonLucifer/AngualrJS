@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>uiRouter默认路由规则操作</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+    <script src="../libs/angular-ui-router.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <!--
+        状态被激活时，它的模板会自动插入到父状态对应的模板中包含ui-view属性的元素内部。如果是顶层的状态，那么它的父模板就是index.html。
+    有三种方法来激活状态：
+    1.调用$state.go()方法，这是一个高级的便利方法；
+    2.点击包含ui-sref指令的链接；
+    3.导航到与状态相关联的 url
+    -->
+    <div ui-view></div>
+</div>
+<script>
+    // 将ui-router作为web应用的依赖注入到主程序
+    var app = angular.module('App', ['ui.router']);
+
+    /*
+     $urlRouterProvider负责处理在状态配置中指定的url路由方式之外的url请求的路由方式。$urlRouterProvider负责监视$location，当$location改变后，$urlRouterProvider将从一个列表，一个接一个查找匹配项，直到找到。所有url都编译成一个UrlMatcher对象。
+     $urlRouterProvider有一些实用的方法，可以在module.config中直接使用
+     */
+    /*$stateProvider处理路由状态的服务，路由的状态反映了该项在应用程序中的位置，描述了在当前状态下UI是应该怎么样的，并且该做什么。*/
+    app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+        // otherwise()只接受一个参数，要么函数要么字符串，字符串必须为合法的url路由地址，函数则会在没有任何路径被匹配的时候被运行
+        $urlRouterProvider.otherwise('/index_home');// 默认路由 重定向的url规则
+
+        // 定义路由规则
+        $stateProvider.state('default', {
+            url: '/index_home',
+            template: '<h1>uiRouter默认路由规则操作</h1>'
+        })
+    }]);
+
+    // 重要:路由是在控制器之上（具体业务）执行的
+    app.controller('ctrl', ['$scope', function ($scope) {
+    }]);
+</script>
+</body>
+</html>

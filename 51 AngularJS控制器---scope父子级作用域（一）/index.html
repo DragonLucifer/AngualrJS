@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>控制器scope父子级作用域详解（一）</title>
+    <script src="../libs/angular.min.js"></script>
+    <link rel="stylesheet" href="../libs/bootstrap.min.css">
+</head>
+<body>
+<div ng-app="App">
+    <div ng-controller="ctrl1">父控制器
+        {{name}}
+        <div ng-controller="ctrl2">子控制器
+            {{name}}
+        </div>
+    </div>
+    <hr/>
+    <!--
+        重要:继承隔离
+        1.当子控制器内含有与父控制器内部相同的属性时（属性值不同），两者隔离互不影响;
+          当子/父控制器内属性改变时不影响父/子控制器内同属性
+        2.当子控制器内不含有属性或与父控制器内部相同的属性时，子控制器内部对象属性受到父控制器影响;
+          当子控制器内属性改变时不影响父控制器内属性;
+          当父控制器内属性改变时影响子控制器内属性
+    -->
+
+    <div ng-controller="ctrl1">父控制器
+        {{data.name}}
+        <div ng-controller="ctrl2">子控制器
+            {{data.name}}<input type="text" ng-model="data.name">
+        </div>
+    </div>
+    <!--
+        若想继承但不隔离（同步即子控制器能够改变父控制器）
+        方法为：传址（即使用对象）
+    -->
+</div>
+<script>
+    /*function fun() {
+        var va = 1;
+        var f = function () {
+            val = 2;// 当子函数作用域内无val变量时会使用父函数作用域内的val值;反之则使用子函数自己本身作用域的val值
+            alert(val);
+        };
+        f();
+    }
+    fun();*/
+    var app = angular.module('App', []);
+    app.controller('ctrl1', ['$scope', function ($scope) {
+        $scope.name = 'lijiabin';
+        $scope.data = {name: 'limingxuan'};
+    }]);
+    app.controller('ctrl2', ['$scope', function ($scope) {
+        $scope.name = 'lidongxu';
+    }]);
+    /*app.directive('myDirective', [function () {
+        return {
+            restrict: 'EA',
+            template: '<h1>这是自定义指令</h1>',
+            replace: false
+        }
+    }]);*/
+</script>
+</body>
+</html>

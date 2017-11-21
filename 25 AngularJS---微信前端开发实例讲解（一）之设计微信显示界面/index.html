@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信前端开发实例讲解（一）之设计微信显示界面</title>
+    <script src="../libs/angular.min.js"></script>
+    <link rel="stylesheet" href="../libs/bootstrap-3.3.7/css/bootstrap.css">
+</head>
+<body>
+<style>
+    .mobile {
+        border: solid 1px #999999;
+        height: 500px;
+        display: flex; /*默认行排列*/
+    }
+
+    .mobile dl {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column-reverse;
+        flex: 1;
+    }
+
+    .mobile dl dt {
+        background-color: #999999;
+        color: #ffffff;
+        height: 30px;
+        text-align: center;
+        border: solid 1px #f3f3f3;
+        cursor: hand;
+        line-height: 2em;
+    }
+
+    .mobile dl dd {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile dl dd a {
+        border: solid 1px #f3f3f3;
+        text-align: center;
+        padding: 5px;
+        text-decoration: none;
+    }
+</style>
+<div ng-app="App" ng-controller="ctrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4" class="app">
+                <div class="mobile">
+                    <dl>
+                        <dt>游戏</dt>
+                        <dd>
+                            <a href="">红警</a>
+                            <a href="">全民突击</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>电影</dt>
+                        <dd>
+                            <a href="">速度与激情7</a>
+                            <a href="">速度与激情8</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>美食</dt>
+                        <dd>
+                            <a href="">意大利肥牛</a>
+                            <a href="">海鲜饭</a>
+                            <a href="">麻辣小龙虾</a>
+                            <a href="">蒜蓉小龙虾</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="col-xs-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">编辑</h3>
+                    </div>
+                    <div class="panel-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+
+    }]);
+</script>
+</body>
+</html>

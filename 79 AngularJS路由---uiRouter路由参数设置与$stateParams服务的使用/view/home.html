@@ -1,0 +1,11 @@
+<style>
+    h1 {
+        background-color: red;
+        color: yellow;
+    }
+</style>
+<h1>首页</h1>
+<li ng-repeat="val in data">
+    <!--通过json对象传递参数-->
+    <a href="" ui-sref="userInfo({id:val.id})">{{val.name}}</a>
+</li>

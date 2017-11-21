@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象扩充与数据遍历</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    {{data}}
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        var obj = {name: "lijiabin"};
+        //AngularJS的angular.extend()方法可以把一个或多个对象中的方法和属性扩展到一个目的对象中，使得这个对象拥有其他对象相同的方法和属性
+        //angular.extends()方法的第一个参数是要被扩展的对象，后面可以传入一个或多个对象。
+        /*
+         如果想要保存一个对象的状态，除了可以调用angular.copy()方法外，还可以把一个空对象｛｝作为第一个对象传入。
+         但要注意的是，angular.extends()是非递归的，也就是说：如果扩展的属性中有对象，那么二者同时引用同一个对象！
+         */
+        angular.extend(obj, {age: "24", city: "jiamusi"});//后有实例
+        console.log(obj);//输出结果：Object{name: "lijiabin", age: "24", city: "jiamusi"}
+
+        //angular.forEach函数遍历数组
+        $scope.data = [
+            //属性可直接写（如name、age不必加双引号）
+            {name: 'lijiabin', age: '24'},
+            {name: 'lidongxu', age: '25'},
+            {name: 'liyang', age: '22'}
+        ];
+        /*angular.forEach(obj, iterator, [context])
+         obj	Object Array	被迭代的对象.
+         iterator	Function	迭代函数
+         返回值:对obj的引用
+         循环对obj对象的每个元素调用iterator, obj对象可以是一个Object或一个Array. Iterator函数调用方法: iterator(value, key, obj),
+         其中obj是被迭代对象，key是obj的property key或者是数组的index，value就是相应的值. (此函数不能够迭代继承的属性.)
+         */
+        angular.forEach($scope.data, function (value, key) {
+            console.log(value);//value是数组元素
+            console.log(key);//key数组下标
+            value.age = "Age: " + value.age;//由于对象value是传址，所以赋值号左右两侧指向同一块存储空间（即数据双向影响）
+        });
+
+        //angular.forEach函数遍历对象
+        var object = {name: 'lijiabin', age: '24'};
+        angular.forEach(object, function (value, key) {
+            console.log(value);//value是对象属性的值 "lijiabin"、"24"
+            console.log(key);//key是对象属性  name、age
+        });
+    }]);
+</script>
+</body>
+</html>
+<!--
+实例：
+<!DOCTYPE html>
+<html ng-app="extendApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/angular.js"></script>
+    <script type="text/javascript">
+        angular.module("extendApp", [])
+            .controller("extendController", function ($scope) {
+                $scope.baby =
+                    {
+                        cry: function () {
+                            console.log("I can only cry!");
+                        }
+                    };
+                $scope.adult =
+                    {
+                        earn: function () {
+                            console.log("I can earn money!");
+                        },
+
+                        lover: {
+                            love: function () {
+                                console.log("I love you!");
+                            }
+                        }
+                    };
+                $scope.human = {};
+                $scope.hehe = "hehe ";
+                $scope.extend = function () {
+                    angular.extend($scope.human, $scope.baby, $scope.adult);
+                    $scope.human.cry();
+                    $scope.human.earn();
+
+                    ★★重要★★
+                    注意，这里修改了lover对象的love()方法，由于extends()方法不是深复制的，$scope.human和$scope.adult其实引用的是同一个对象（类似于址传递）
+                    $scope.human.lover.love = function () {
+                        console.log("I hate you!");
+                    };
+
+                    这两行都会输出“I hate you !"，可怜的adult对象,他把自己的lover分享给了human!
+                    $scope.human.lover.love();
+                    $scope.adult.lover.love();
+                }
+            });
+    </script>
+</head>
+<body>
+<div ng-controller="extendController">
+    <button ng-click="extend()">点击我！</button>
+</div>
+</body>
+</html>
+控制台的打印结果如下：
+I can only cry!
+I can earn money!
+I hate you!
+I hate you!-->

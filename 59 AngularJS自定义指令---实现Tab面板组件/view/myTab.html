@@ -1,0 +1,31 @@
+<div class="my-tab"><!--给顶级元素定义类，可读性强，不影响全局-->
+    <style>
+        .my-tab a {
+            padding: 6px 10px;
+            border: solid 2px #aaa;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .my-tab a.active {
+            background-color: #aaa;
+            color: #fff;
+        }
+
+        .my-tab div.lists {
+            border: solid 2px;
+            padding: 20px;
+            width: 300px;
+            height: 200px;
+            margin-top: -2px;
+        }
+    </style>
+    <a href="" ng-class="{active:!$first}" ng-repeat="value in data">{{value.title}}</a>
+
+    <!--block 表示此元素将显示为块级元素，此元素前后会带有换行符-->
+    <div class="lists" ng-repeat="value in data" ng-style="{display:$first?'block':'none'}">
+        <ul>
+            <li ng-repeat="v in value.data">{{v.title}}</li>
+        </ul>
+    </div>
+</div>

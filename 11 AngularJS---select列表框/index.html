@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS---select列表框</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <!--ng-model的值会指向select元素的当前选中项的val值. ng-options指令会用于填充select下拉选项-->
+    <!--val in data表示迭代当前作用域下的data对象.迭代时,data对象里的每一项的名字就叫val.-->
+    <select ng-options="val.value as val.city for val in data" ng-model="city">
+        <option value="" selected>请选择城市</option>
+        <!--迭代过程还原
+            <option value="val.value">val.city</option>
+            <option value="beijing">北京</option>
+            <option value="harbin">哈尔滨</option>
+            <option value="jiamusi">佳木斯</option>
+        -->
+    </select>
+    {{city}}<!--显示option的value。如：下拉选择北京，显示beijing-->
+</div>
+
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.data = [
+            {city: '北京', value: 'beijing'},
+            {city: '哈尔滨', value: 'harbin'},
+            {city: '佳木斯', value: 'jiamusi'}
+        ];
+    }]);
+</script>
+</body>
+</html>

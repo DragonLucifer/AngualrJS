@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-value的使用实例分析</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    商品名称：<input type="text" ng-model="goods.title"><br/>
+    商品价格：<input type="text" ng-model="goods.price" readonly><br/>
+    商品数量：<input type="text" ng-model="goods.num"><br/>
+    <!--总计：<input type="text" ng-model="goods.price*goods.num"> 错误 ng-model里面无法写AngularJS表达式-->
+
+    <!--ng-value指令里面可以写AngularJS表达式（优势）-->
+    总计：<input type="text" ng-value="goods.price*goods.num" readonly><br/>
+
+    <!--注意：input标签里面无法写ng-bind指令 ng-bind用于展示数据（单向） 当用户输入的时候需要反方向修改数据（即双向绑定数据）-->
+    <!--
+        ng-bind是从$scope -> view的单向绑定，也就是说ng-bind是相当于{{object.xxx}}，是用于展示数据的。
+        ng-modle是$scope <-> view的双向绑定
+    -->
+</div>
+
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.goods = {'title': 'Apple Mac', 'price': 12288, 'num': 2};
+    }]);
+</script>
+</body>
+</html>

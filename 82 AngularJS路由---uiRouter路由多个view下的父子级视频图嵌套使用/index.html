@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>uiRouter路由多个view下的父子级视频图嵌套使用</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+    <script src="../libs/angular-ui-router.min.js"></script>
+</head>
+<body>
+<div ng-app="App">
+    <div ui-view=""></div>
+    <div ui-view="content"></div>
+</div>
+<script>
+    /*
+     使用场景:功能导航栏中含有需要显示在不同界面的效果（比如登录、首页点击之后在不同的页面显示）
+     */
+    var app = angular.module('App', ['ui.router']);
+
+    app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/index');// 默认路由 重定向的url规则
+
+        // 定义路由规则
+        $stateProvider
+        // my 我的
+            .state('index', {
+                url: '/index',
+                // 一处改变影响多个视图（比如点击导航栏中的不同功能，left与right区域内容均发生改变
+                views: {
+                    // 在<div ui-view=""></div>中显示用'@'
+                    '@': {
+                        templateUrl: 'view/index.html'
+                    },
+                    'content': {
+                        template: '<h1>Welcome</h1>'
+                    }
+                }
+            })
+            .state('index.video', {
+                url: '/video',
+                // 一处改变影响多个视图（比如点击导航栏中的不同功能，left与right区域内容均发生改变
+                views: {
+                    // 在子视图中显示　（方法一:parent 方法二my.video 适用于.state单个视图）
+                    // 多个视图（即views）'子视图@父视图' @用于到顶级视图中寻找视图
+                    'son@index': {
+                        templateUrl: 'view/video.html'
+                    },
+                    // 此处所在层次为子视图，若直接写content无效因为content为父视图，而所在层次为子视图所以需要写@到顶级视图中寻找content
+                    'content@': {
+                        template: ''
+                    }
+                }
+            })
+    }]);
+</script>
+</body>
+</html>

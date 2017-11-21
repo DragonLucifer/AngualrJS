@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS---checkbox复选框</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <!--
+        点击checkbox 选中复选框时，ng-model 的绑定默认值是true，取消选中时为false
+        使用ng-true-value="1" ng-false-value="0" 可以将ng-model绑定的值的数据类型扩大（即可以是字符串或者数字）
+    -->
+    游戏：<input type="checkbox" ng-model="data.game" ng-true-value="1" ng-false-value="0"><br/>
+    <!--ng-model=value 其值表示该checkbox是否选中-->
+    电影：<input type="checkbox" ng-model="data.video" ng-true-value="1" ng-false-value="0">
+    {{data}}
+
+    <div ng-show="data.game==1"><!--ng-show="data.game"-->
+        <h1>Game</h1>
+        <textarea name="game" id="game" cols="30" rows="10"></textarea>
+    </div>
+    <div ng-show="data.video==1">
+        <h1>Video</h1>
+        <textarea name="video" id="video" cols="30" rows="10"></textarea>
+    </div>
+</div>
+
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        // 注意：此处数据双向绑定的值要前后保持一致。此时取消为0 那么ng-false-value也应该为0 （ng-value<==>ng-model）
+        $scope.data = {game: 0, video: 0};// 默认复选框均未选中 或者写成$scope.data={game:false,video:false};
+    }]);
+</script>
+</body>
+</html>
+
+<!--
+    问题：在数据库录入数据时不想使用true|false（即在数据库数据显示true|false），想使用指定的值表示其含义如true为1，false为0
+    解决方式：使用ng-true-value、ng-false-value指令，使用指定的值，这样在数据库内数据存储以及数据查询更加方便
+-->

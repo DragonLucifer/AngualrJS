@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$sce服务安全的处理html数据</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <!--
+        angularJS在进行数据绑定时默认是会以文本的形式输出，也就是对你数据中的html标签不进行转义照单全收，这样提高了安全性，
+        防止了html标签中的注入攻击，但有些时候还是需要的，特别是从数据库读取带格式的文本时，无法正常的显示在页面中。
+    -->
+    {{data}}<!--输出结果:<h1>lijiabin</h1>-->
+    <hr/>
+
+    <!--$sce服务-->
+    <!--注意:对html进行转义，则要在数据绑定的html标签中使用ng-bind-html属性-->
+    <!--$sce是angularJS自带的安全处理模块，$sce.trustAsHtml(input)方法便是将数据内容以html的形式进行解析并返回。将此过滤器添加到ng-bind-html所绑定的数据中，便实现了在数据加载时对于html标签的自动转义。-->
+    <!--避免跨站XSS-->
+    <div ng-bind-html="data"></div><!--报错:$sce:unsafe 解决方式:通过$sce服务-->
+    <hr/>
+
+    <!--过滤器 接口调用-->
+    <div ng-bind-html="title|trustHtml"></div>
+</div>
+<script>
+    var app = angular.module('App', []);
+
+    // 过滤器---将方法抽象出接口，不需要每次都需要调用$sce.trustAsHtml()方法，减少代码量。
+    app.filter('trustHtml', ['$sce', function ($sce) {
+        return function (data) {
+            return $sce.trustAsHtml(data);
+        }
+    }]);
+
+    app.controller('ctrl', ['$scope', '$sce', function ($scope, $sce) {
+        $scope.data = $sce.trustAsHtml('<h1 style="color:yellow">lijiabin</h1>');// 默认情况下，由于数据安全问题是不让AngularJS包含HTML元素在视图中显示出来的
+        $scope.title = '<h3 style="color:yellow">lijiabin</h3>';
+    }]);
+</script>
+</body>
+</html>

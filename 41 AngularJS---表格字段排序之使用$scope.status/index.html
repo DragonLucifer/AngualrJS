@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格字段排序之使用$scope.status</title>
+    <script src="../libs/angular.min.js"></script>
+    <link rel="stylesheet" href="../libs/bootstrap.min.css">
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <table border="1" width="600">
+        <tr>
+            <td style="text-align: center" ng-click="orderBy('id')">编号<span class="caret"></span></td>
+            <td style="text-align: center" ng-click="orderBy('click')">点击数<span class="caret"></span></td>
+            <td style="text-align: center" ng-click="orderBy('title')">标题<span class="caret"></span></td>
+        </tr>
+        <tr ng-repeat="(key,value) in data">
+            <td style="text-align: center">{{value.id}}</td>
+            <td style="text-align: center">{{value.click}}</td>
+            <td style="text-align: center">{{value.title}}</td>
+        </tr>
+    </table>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', '$filter', function ($scope, $filter) {
+        $scope.data = [
+            {id: 1, click: 100, title: 'HRBU'},
+            {id: 2, click: 200, title: 'HRBUST'},
+            {id: 3, click: 300, title: 'HIT'}
+        ];
+
+        // 记录排序状态
+        $scope.status = {id: false, click: false, title: false};
+        $scope.orderBy = function (filed) {
+            $scope.status[filed] = !$scope.status[filed];
+            $scope.data = $filter('orderBy')($scope.data, filed, $scope.status[filed]);
+        };
+    }]);
+</script>
+</body>
+</html>

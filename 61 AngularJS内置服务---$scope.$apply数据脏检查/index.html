@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$scope.$apply数据脏检查</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    {{name}}
+    <button ng-click="callback()">事件</button>
+    <hr/>
+    <button id="bt">jQuery处理</button>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.name = 'lijiabin';// 父作用域
+        $scope.callback = function () {
+            $scope.name = 'lidongxu';
+        };
+
+        // 数据未发生变化，但其实已经更改。由于AngularJS没有被触发进行数据同步更新（进行数据脏检查）。
+
+        // 重要:原生JS不能够触发AngularJS进行数据同步更新
+        // 重要:原生JS不能够触发AngularJS进行数据同步更新
+        // 重要:原生JS不能够触发AngularJS进行数据同步更新
+
+        // jQuery方法（原生JS），非AngularJS中$scope的方法
+        // 解决动作未在AngularJS中绑定，如何进行数据脏检查，视图进行更新
+        $('#bt').click(function () {
+            $scope.name = 'limingxuan';// 子作用域 一定能找到父作用域中的$scope.name
+
+            // 有可能前端框架的某些控件中进行数据更改后无法绑定到$scope上，此情形下可使用$scope.$apply()方法
+            /*
+             $scope.$apply()应该在尽可能接近异步事件绑定的地方被调用。
+             */
+            $scope.$apply();
+        });
+    }]);
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$http服务之后台接收POST数据</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', '$http', function ($scope, $http) {
+        $http({
+            method: 'post',
+            url: 'data.php',
+            data: {id: 1, name: 'lijiabin'}
+        }).then(function (response) {
+            console.log(response.data);
+        })
+    }]);
+</script>
+</body>
+</html>

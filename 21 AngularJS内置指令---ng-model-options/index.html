@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-model-options提高网站性能</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<!--问题：用户输入过程中数据发生变化，同时向后台发送请求（只要发生变化就需要向后台发送请求）使得性能降低，为了减少这种无谓的性能开销-->
+<!--解决方式：ng-model-options（一定要设置）减少向后台的数据请求-->
+<div ng-app="App" ng-controller="ctrl">
+    <!--ng-model-options指令用来控制ng-model何时进行同步-->
+    <!--在input触发了onblur事件（鼠标失去焦点）的时候更新ng-model,而不是每次按下键盘就立即更新model-->
+    <input type="text" ng-model="title_updateOn" ng-model-options="{updateOn:'blur'}">
+    {{title_updateOn}}
+    <br/>
+    <hr/>
+
+    <!--指定多少秒后更新数据-->
+    <input type="text" ng-model="title_debounce" ng-model-options="{debounce:3000}">
+    {{title_debounce}}
+    <br/>
+    <hr/>
+
+    <!--两者结合时用  blur:0表示鼠标失去焦点后立即更新-->
+    <!--重要：语法{updateOn:'default blur',debounce:{default:3000,blur:0}} 设置default-->
+    <input type="text" ng-model="title_updateOndebounce"
+           ng-model-options="{updateOn:'default blur',debounce:{default:3000,blur:0}}">
+    {{title_updateOndebounce}}
+    <br/>
+    <hr/>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+
+    }]);
+</script>
+</body>
+</html>

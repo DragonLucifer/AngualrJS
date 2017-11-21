@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$cacheFactory的缓存实例讲解</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+</head>
+<body>
+<div ng-app="App">
+    <div ng-controller="ctrl1">
+        {{data}}
+    </div>
+    <div ng-controller="ctrl2">
+        {{data}}
+    </div>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl1', ['$scope', '$cacheFactory', function ($scope, $cacheFactory) {
+        var obj = $cacheFactory('website');// 定义存储空间
+        obj.put('web', {name: 'Baidu', url: 'www.baidu.com'});
+        obj.put('user', {name: 'lijiabin', age: 24});
+        $scope.data = obj.get('web').name;
+    }]);
+    app.controller('ctrl2', ['$scope', '$cacheFactory', function ($scope, $cacheFactory) {
+        var obj = $cacheFactory.get('website');// 使用存储空间
+        $scope.data = obj.get('web').name;
+    }]);
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格字段排序之使用arguments.callee</title>
+    <script src="../libs/angular.min.js"></script>
+    <link rel="stylesheet" href="../libs/bootstrap.min.css">
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <table border="1" width="600">
+        <tr>
+            <td style="text-align: center" ng-click="orderBy('id')">编号<span class="caret"></span></td>
+            <td style="text-align: center" ng-click="orderBy('click')">点击数<span class="caret"></span></td>
+            <td style="text-align: center" ng-click="orderBy('title')">标题<span class="caret"></span></td>
+        </tr>
+        <tr ng-repeat="(key,value) in data">
+            <td style="text-align: center">{{value.id}}</td>
+            <td style="text-align: center">{{value.click}}</td>
+            <td style="text-align: center">{{value.title}}</td>
+        </tr>
+    </table>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', '$filter', function ($scope, $filter) {
+        $scope.data = [
+            {id: 1, click: 100, title: 'HRBU'},
+            {id: 2, click: 200, title: 'HRBUST'},
+            {id: 3, click: 300, title: 'HIT'}
+        ];
+        $scope.orderBy = function (filed) {
+            // arguments.callee属性包含当前正在执行的函数
+            // callee是 arguments对象的一个属性。它可以用于引用该函数的函数体内当前正在执行的函数。这在函数的名称是未知时很有用，例如在没有名称的函数表达式 (也称为“匿名函数”)内,它表示对函数对象本身的引用，这有利于匿名函数的递归或者保证函数的封装性。
+            if (arguments.callee[filed] == undefined) {
+                arguments.callee[filed] = false;
+            }
+            // arguments.callee生命周期与全局变量一致
+            arguments.callee[filed] = !arguments.callee[filed];
+            $scope.data = $filter('orderBy')($scope.data, filed, arguments.callee[filed]);
+        }
+    }]);
+</script>
+</body>
+</html>

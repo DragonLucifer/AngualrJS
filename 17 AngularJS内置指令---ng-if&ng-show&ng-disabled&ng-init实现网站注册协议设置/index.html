@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-if&ng-show&ng-disabled&ng-init实现网站注册协议设置</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <input type="checkbox" ng-model="name"><!--当checkbox选中时 name为true，否则为false-->
+    {{name}}
+    <!--ng-show 指令在表达式为 true 时显示指定的 HTML 元素（ng-show包含的范围），否则隐藏指定的 HTML 元素。-->
+    <div ng-show="name">显示</div>
+    <!--ng-hide 指令在表达式为 true 时隐藏指定的 HTML 元素，否则显示指定的 HTML 元素。-->
+    <div ng-hide="name">隐藏</div>
+
+    <!--ng-if 属性用来控制页面内（Dom节点）元素的添加或移除。-->
+    <div ng-if="name">ng-if</div>
+
+    <!--
+        注意：
+        ng-show/ng-hide单纯的进行元素的添加删除
+        ng-if 条件为true时，将所在元素的克隆添加到其父元素内，然后处理该元素以及内部所有子元素的ng事件；为false时，将其从父元素中移除，并且将其scope删除。
+    -->
+    <br/>
+    <br/>
+    <!--status未初始化时为false-->
+    <label><input type="checkbox" ng-model="status">接受协议</label>
+    {{status}}
+
+    <!--ng-click单击事件 copyright=!copyright状态取反-->
+    <button ng-init="copyright=false" ng-click="copyright=!copyright">查看协议</button>
+    <br/>
+    <textarea ng-show="copyright">协议内容：。。。。。。</textarea>
+    <br/>
+
+    <!--
+        ng-disabled 指令设置标签元素或者表单输入字段的 disabled 属性(button、input、select、textarea)。
+        如果 ng-disabled 中的表达式返回 true 则该标签元素将被禁用，反之可用
+    -->
+    <button ng-disabled="!status">登录</button>
+
+    <!--重要：ng-init、ng-show、ng-hide、ng-if、ng-disabled指令中表达式都可以作为参数，返回结果均为true/false-->
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+
+    }]);
+</script>
+</body>
+</html>

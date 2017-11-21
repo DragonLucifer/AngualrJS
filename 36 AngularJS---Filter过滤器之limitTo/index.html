@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter过滤器之limitTo</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <!--语法：{{变量名|limitTo:num：startPosition}}
+        当num>0时 从前面进行截取
+        当num<0时 从后面进行截取
+    -->
+    {{data|limitTo:2}}<br/><!--输出结果：一二-->
+    {{data|limitTo:-2}}<br/><!--输出结果:六七-->
+    {{data|limitTo:2:1}}<br/><!--输出结果：二三-->
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.data = '一二三四五六七';
+    }]);
+</script>
+</body>
+</html>

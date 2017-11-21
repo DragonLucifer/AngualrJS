@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular与jQuery实例对比分析</title>
+    <script src="../libs/jquery.min.js"></script>
+</head>
+<body>
+<style>
+    .data {
+        background-color: yellow;
+    }
+</style>
+<!--class用于定义css样式-->
+<ul id="data" class="data"></ul>
+</body>
+</html>
+<script>
+    alert($);
+    $.get('1.php', function (res) {
+        console.log(res);
+        $(res).each(function (i) {
+            html = "<li>" + res[i].name + " " + res[i].age + "</li>";
+            // 高耦合度 数据与前台页面关联 当前台页面id="data"出现更改时容易导致数据无法正确读出
+            // jquery属于节点操作，当节点发生变化时数据无法操作，使得后期维护变难----jquery弊端
+            $('#data').append(html);
+            // $('.data').append(html);
+        });
+    }, 'json');
+    // 要求数据为json格式
+</script>

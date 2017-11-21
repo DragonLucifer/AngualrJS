@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>控制器中使用过滤器</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    {{data}}
+    <button ng-click="orderBy()">控制器中使用过滤器</button>
+</div>
+<script>
+    var app = angular.module('App', []);
+    // 将$filter服务依赖注入控制器中
+    // 服务:服务是一个对象或函数，对外提供特定的功能.
+    app.controller('ctrl', ['$scope', '$filter', function ($scope, $filter) {
+        $scope.data = [
+            {id: 1, click: 100, title: 'HRBU'},
+            {id: 2, click: 200, title: 'HRBUST'},
+            {id: 3, click: 300, title: 'HIT'}
+        ];
+
+        /*
+         $filter
+         {{expression [ | filter_name[:parameter_value] ... ]}}
+         用法：$filter(filterName)---参数 - filterName[string]:过滤器的名字
+         返回值:一个过滤器函数
+         */
+        // 语法：$filter（'过滤器类型关键字'）（数据，属性(字段)）;
+        $scope.orderBy = function () {
+            $scope.data = $filter('orderBy')($scope.data, 'id', true);
+        }
+    }]);
+</script>
+</body>
+</html>

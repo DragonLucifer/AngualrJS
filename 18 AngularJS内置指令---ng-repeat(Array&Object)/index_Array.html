@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-repeat_Array</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <ul>
+        <!--ng-repeat 指令用于（遍历数组、对象）循环输出指定次数的 HTML 元素。注意集合必须是数组或对象。-->
+        <!--当集合为数组时，{{value}}可直接取得数据；当集合为对象时，{{value.。。。}}可取得对应数据（原因：{{对象.属性}}取得属性值）-->
+        <li ng-repeat="value in data">
+            {{$index}}<!--数组下标 具有唯一性-->
+            姓名：{{value}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </li>
+        <br/>
+        <hr>
+
+        <!--
+             报错:Duplicates in a repeater are not allowed.
+             Use 'track by' expression to specify unique keys. Repeater: value in data_SameValue, Duplicate key: string:lijiabin
+
+             原因：ng-repeat不允许数组中存在两个相同Id的对象。为了避免这个错误,需要定义自己的track by表达式
+        -->
+        <li ng-repeat="value in data_SameValue">
+            姓名：{{value}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </li>
+        <br/>
+        <hr/>
+
+        <!--解决方法-->
+        <!--{{$index}} 数组下标 具有唯一性-->
+        <li ng-repeat="value in data_SameValue track by $index">
+            姓名：{{value}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </li>
+        <br/>
+        <hr/>
+
+
+    </ul>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.data = ['lijiabin', 'lidongxu', 'liyang', 'limingxun'];
+        $scope.data_SameValue = ['lijiabin', 'lijiabin', 'liyang', 'limingxun'];
+    }]);
+</script>
+</body>
+</html>

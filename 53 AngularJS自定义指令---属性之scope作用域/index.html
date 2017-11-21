@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scope作用域详解</title>
+    <script src="../libs/angular.min.js"></script>
+    <link rel="stylesheet" href="../libs/bootstrap.min.css">
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl"><!--控制器ctrl与自定义指令myDirective平行关系都属于模块model-->
+    {{name}}
+    <input type="text" ng-model="name"><!--控制器与指令共享同一数据 控制器内部属性值改变->指令内部属性值改变-->
+    <hr/>
+    <div my-directive>子作用域<input type="text" ng-model="name"><!--当scope: true且指令内部无name属性，继承控制器-->
+    </div>
+    <div my-directive>同级子作用域<input type="text" ng-model="name">
+    </div>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.name = 'lijiabin';
+    }]);
+    app.directive('myDirective', [function () {
+        return {
+            restrict: 'EA',
+            template: '{{name}}<input type="text" ng-model="name">',
+            scope: true// 当指令scope属性值为true时，单独开辟数据区域
+            /* 若指令内部含有name属性时正常使用指令自身name属性值，若指令内部无name属性时分为下列三种情况（子作用域有实例数据对象，则不访问父作用域）
+             1.scope:{} 表明指令内部无name属性时不继承控制器，独立数据区域（与控制器无关）（分家）--为dirctive创建隔离作用域。优势:复用directive，各自不会产生干扰
+             2.scope:false（默认） 控制器与指令共享同一数据 指令内部无name属性，继承控制器（亲如一家人）
+             3.scope:true 表明指令内部无name属性时继承控制器,但子作用域有独立数据区域（父作用域影响子作用域，反之不影响）（等同于父子级关系）
+             */
+        }
+    }]);
+</script>
+</body>
+</html>

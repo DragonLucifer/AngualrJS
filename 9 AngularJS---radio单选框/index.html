@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> AngularJS---radio单选框</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <!--ng-model<==>value双向影响-->
+
+    <!--value属性值 value="true" & value=true & value=1 皆不相同-->
+    <!--
+        value="true" 字符串
+        value=true
+        value=1
+    -->
+    网站开启：<input type="radio" ng-model="status" ng-value="1">开启<br/><!--input标签里面写value或者ng-value都可以-->
+    网站关闭：<input type="radio" ng-model="status" ng-value="0">关闭<br/>
+    {{status}}
+    <!--ng-show指令可以写表达式,在表达式为 true 时显示指定的 HTML 元素（即ng-show所包含的范围），否则隐藏指定的 HTML 元素。-->
+    <div ng-show="!status"><!--!status也可以写成status==0-->
+        <h2>关闭原因</h2>
+        <textarea readonly>网站维护中,给大家带来不便请谅解</textarea>
+    </div>
+</div>
+
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+
+        $scope.status = 1;
+
+    }]);
+</script>
+</body>
+</html>
+
+<!--
+注意:
+1.当input标签内使用value属性时                                      2.当input标签内使用ng-value指令时（ng-value主要应用在 input[radio]，ng-value的值会绑定到ng-model上）
+value=1   $scope.status=1/"1"/true;     正确                      value=1   $scope.status=1/"1"/true;     正确
+value=1   $scope.status="true"          错误                      value=1   $scope.status="true"          错误
+value="1"  $scope.status=1/"1"/true;    正确                      value="1"  $scope.status=1/"1"/true;    正确
+value="1"   $scope.status="true"        错误                      value="1"   $scope.status="true"        错误
+value=true  $scope.status=1/"1"/true    错误                      value=true  $scope.status=1/"1"/true    正确
+value=true  $scope.status="true"        正确                      value=true  $scope.status="true"        错误
+value="true"  $scope.status=1/"1"/true  错误                      value="true"  $scope.status=1/"1"/true  正确
+value="true"  $scope.status="true"      正确                      value="true"  $scope.status="true"      错误
+-->

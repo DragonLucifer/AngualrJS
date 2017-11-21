@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6367b7bd-b92a-43ce-917f-dd475bf99f60" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>school-name</find>
+      <find>va</find>
+      <find>val</find>
+      <find>vali</find>
+      <find>valid</find>
+      <find>validatior</find>
+      <find>validatio</find>
+      <find>validati</find>
+      <find>valida</find>
+      <find>validat</find>
+      <find>validato</find>
+      <find>validator</find>
+    </findStrings>
+    <dirStrings>
+      <dir>C:\Users\lenovo\Desktop\AngularJS\Student Information Management System</dir>
+    </dirStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/80 AngularJS路由---uiRouter路由定义高效的父子级嵌套路由/view/login.html" />
+        <option value="$PROJECT_DIR$/80 AngularJS路由---uiRouter路由定义高效的父子级嵌套路由/view/home.html" />
+        <option value="$PROJECT_DIR$/81 AngularJS路由---uiRouter路由定义超灵活的嵌套路由/view/home.html" />
+        <option value="$PROJECT_DIR$/81 AngularJS路由---uiRouter路由定义超灵活的嵌套路由/view/my.html" />
+        <option value="$PROJECT_DIR$/81 AngularJS路由---uiRouter路由定义超灵活的嵌套路由/view/about.html" />
+        <option value="$PROJECT_DIR$/81 AngularJS路由---uiRouter路由定义超灵活的嵌套路由/index.html" />
+        <option value="$PROJECT_DIR$/81 AngularJS路由---uiRouter路由定义超灵活的嵌套路由/view/video.html" />
+        <option value="$PROJECT_DIR$/81 AngularJS路由---uiRouter路由定义超灵活的嵌套路由/view/top.html" />
+        <option value="$PROJECT_DIR$/81 AngularJS路由---uiRouter路由定义超灵活的嵌套路由/view/video_list.html" />
+        <option value="$PROJECT_DIR$/81 AngularJS路由---uiRouter路由定义超灵活的嵌套路由/view/menu.html" />
+        <option value="$PROJECT_DIR$/82 AngularJS路由---uiRouter路由多个view下的父子级视频图嵌套使用/view/video.html" />
+        <option value="$PROJECT_DIR$/82 AngularJS路由---uiRouter路由多个view下的父子级视频图嵌套使用/view/my.html" />
+        <option value="$PROJECT_DIR$/25 AngularJS---微信前端开发实例讲解（一）之设计微信显示界面/index.html" />
+        <option value="$PROJECT_DIR$/26 AngularJS---微信前端开发实例讲解（二）之设计微信编辑界面/index.html" />
+        <option value="$PROJECT_DIR$/27 AngularJS---微信前端开发实例讲解（三）之绑定数据/index.html" />
+        <option value="$PROJECT_DIR$/28 AngularJS---微信前端开发实例讲解（四）之绑定数据（链接）/index.html" />
+        <option value="$PROJECT_DIR$/29 AngularJS---微信前端开发实例讲解（五）之添加菜单/index.html" />
+        <option value="$PROJECT_DIR$/30 AngularJS---微信前端开发实例讲解（六）之使用字体图标Font Awesome/index.html" />
+        <option value="$PROJECT_DIR$/31 AngularJS---微信前端开发实例讲解（七）之介绍经典JS库Underscore&amp;Lodash/index.html" />
+        <option value="$PROJECT_DIR$/32 AngularJS---微信前端开发实例讲解（八）之删除菜单（使用Underscore库）/index.html" />
+        <option value="$PROJECT_DIR$/33 AngularJS---微信前端开发实例讲解（九）之修复删除菜单时一级菜单选项不显示的问题/index.html" />
+        <option value="$PROJECT_DIR$/前端开发常用代码/3 表单验证提示状态/index.html" />
+        <option value="$PROJECT_DIR$/前端开发常用代码/4 表单验证提示状态/index.html" />
+        <option value="$PROJECT_DIR$/前端开发常用代码/4 下拉菜单验证提示状态/index.html" />
+        <option value="$PROJECT_DIR$/前端开发常用代码/5 大学下拉菜单选择/tmpl.html" />
+        <option value="$PROJECT_DIR$/前端开发常用代码/5 大学下拉菜单选择/location.json" />
+        <option value="$PROJECT_DIR$/前端开发常用代码/5 大学下拉菜单选择/index.html" />
+        <option value="$PROJECT_DIR$/82 AngularJS路由---uiRouter路由多个view下的父子级视频图嵌套使用/view/index.html" />
+        <option value="$PROJECT_DIR$/82 AngularJS路由---uiRouter路由多个view下的父子级视频图嵌套使用/index.html" />
+        <option value="$PROJECT_DIR$/Login&amp;&amp;Register/login.js" />
+        <option value="$PROJECT_DIR$/Login&amp;&amp;Register/navigation.html" />
+        <option value="$PROJECT_DIR$/Login&amp;&amp;Register/directive.js" />
+        <option value="$PROJECT_DIR$/Login&amp;&amp;Register/view/nav.html" />
+        <option value="$PROJECT_DIR$/Login&amp;&amp;Register/view/welcome.html" />
+        <option value="$PROJECT_DIR$/Login&amp;&amp;Register/controller.js" />
+        <option value="$PROJECT_DIR$/Login&amp;&amp;Register/router.js" />
+        <option value="$PROJECT_DIR$/Login&amp;&amp;Register/index.html" />
+        <option value="$PROJECT_DIR$/Login&amp;&amp;Register/view/login.html" />
+        <option value="$PROJECT_DIR$/Student Information Management System/view/login_index.html" />
+        <option value="$PROJECT_DIR$/Student Information Management System/view/index.html" />
+        <option value="$PROJECT_DIR$/Student Information Management System/view/welcome.html" />
+        <option value="$PROJECT_DIR$/Student Information Management System/view/login.html" />
+        <option value="$PROJECT_DIR$/Student Information Management System/controller.js" />
+        <option value="$PROJECT_DIR$/Student Information Management System/view/studentManagementRule.html" />
+        <option value="$PROJECT_DIR$/Student Information Management System/view/studentRule.html" />
+        <option value="$PROJECT_DIR$/Student Information Management System/index.html" />
+        <option value="$PROJECT_DIR$/Student Information Management System/view/register.html" />
+        <option value="$PROJECT_DIR$/Student Information Management System/view/addstudentInfo" />
+        <option value="$PROJECT_DIR$/Student Information Management System/view/studentinfoManagement.html" />
+        <option value="$PROJECT_DIR$/Student Information Management System/view/nav.html" />
+        <option value="$PROJECT_DIR$/Student Information Management System/router.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AngularJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AngularJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="前端开发常用代码" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="3 表单验证提示状态" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AngularJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AngularJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="前端开发常用代码" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AngularJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AngularJS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="JavaScriptPreferStrict" value="false" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
+    <property name="node.js.selected.package.stylelint" value="" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\lenovo\Desktop\AngularJS\Student Information Management System\view" />
+      <recent name="C:\Users\lenovo\Desktop\AngularJS\Login&amp;&amp;Register\view" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lenovo\Desktop\AngularJS\Student Information Management System\css" />
+      <recent name="C:\Users\lenovo\Desktop\AngularJS\Student Information Management System\css\bootstrap-3.0.0\css" />
+      <recent name="C:\Users\lenovo\Desktop\AngularJS\Student Information Management System" />
+      <recent name="C:\Users\lenovo\Desktop\AngularJS\前端开发常用代码\4 下拉菜单验证提示状态" />
+      <recent name="C:\Users\lenovo\Desktop\AngularJS\前端开发常用代码\5 大学下拉菜单选择" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6367b7bd-b92a-43ce-917f-dd475bf99f60" name="Default" comment="" />
+      <created>1502777042920</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1502777042920</updated>
+      <workItem from="1502777046714" duration="11206000" />
+      <workItem from="1502844714227" duration="18748000" />
+      <workItem from="1502949690321" duration="3257000" />
+      <workItem from="1504402584078" duration="603000" />
+      <workItem from="1504590437684" duration="12927000" />
+      <workItem from="1504611244907" duration="8362000" />
+      <workItem from="1504762762906" duration="741000" />
+      <workItem from="1504763900751" duration="1571000" />
+      <workItem from="1504935267643" duration="60000" />
+      <workItem from="1504935339606" duration="21183000" />
+      <workItem from="1505005379322" duration="2169000" />
+      <workItem from="1505007742535" duration="12872000" />
+      <workItem from="1505095881026" duration="10682000" />
+      <workItem from="1505137701685" duration="3210000" />
+      <workItem from="1505178637105" duration="1418000" />
+      <workItem from="1505180684483" duration="123000" />
+      <workItem from="1505180818080" duration="6495000" />
+      <workItem from="1505187341515" duration="3000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="115630000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12291667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958034" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/68 AngularJS内置服务---$http服务简写操作/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/74 AngularJS路由---uiRouter默认路由规则操作/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="18" column="23" lean-forward="false" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/75 AngularJS路由---uiRouter链接上实例路由跳转方式/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-156">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/angular-ui-router.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/82 AngularJS路由---uiRouter路由多个view下的父子级视频图嵌套使用/view/video.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/82 AngularJS路由---uiRouter路由多个view下的父子级视频图嵌套使用/view/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="1" column="31" lean-forward="false" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/82 AngularJS路由---uiRouter路由多个view下的父子级视频图嵌套使用/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="45" column="30" lean-forward="false" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/78 AngularJS路由---uiRouter路由控制器或指令中执行路由跳转/view/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/bootstrap-3.3.7/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/bootstrap-3.3.7/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="21" column="34" lean-forward="false" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/directive.js" />
+    <entry file="file://$PROJECT_DIR$/79 AngularJS路由---uiRouter路由参数设置与$stateParams服务的使用/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="49" column="27" lean-forward="false" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/77 AngularJS路由---uiRouter路由控制器使用方式详解/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-44">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/78 AngularJS路由---uiRouter路由控制器或指令中执行路由跳转/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/bootstrap-3.3.7/js/bootstrap.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/angular.js" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/angular.min.js" />
+    <entry file="file://$PROJECT_DIR$/libs/angular.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="18" column="42" lean-forward="false" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/libs/Blob.js" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/libs/bootstrap.min.css" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/view/login_index.html" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/css/bootstrap-3.0.0/css/bootstrap.min.css" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/css/bootstrap-3.0.0/js/bootstrap.min.js" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/libs/angular-1.3.0.js" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/libs/ui-bootstrap-tpls-0.11.0.js" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/css/bootstrap-3.0.0/js/bootstrap.js" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/view/index.html" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/css/bootstrap-3.0.0/css/bootstrap.css" />
+    <entry file="file://$PROJECT_DIR$/libs/angular.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="17246" column="33" lean-forward="false" selection-start-line="17246" selection-start-column="24" selection-end-line="17246" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/css/bootstrap-3.0.0/css/bootstrap-theme.css" />
+    <entry file="file://$PROJECT_DIR$/libs/bootstrap-3.3.7/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/css/index.css" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/css/bootstrap-3.3.7/js/npm.js" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/css/bootstrap-3.3.7/css/bootstrap.min.css" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/css/bootstrap-3.3.7/css/bootstrap-theme.min.css" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/css/bootstrap-3.3.7/js/bootstrap.min.js" />
+    <entry file="file://$PROJECT_DIR$/19 AngularJS内置指令---ng-selected&amp;ng-disabled&amp;g-readonly/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/前端开发常用代码/3 表单验证提示状态/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/view/studentManagementRule.html" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/view/welcome.html" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/controller.js" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/image/公安厅.jpg" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/view/register.html" />
+    <entry file="file://$PROJECT_DIR$/80 AngularJS路由---uiRouter路由定义高效的父子级嵌套路由/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="619">
+          <caret line="42" column="19" lean-forward="false" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/index.html" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/view/studentRule.html" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/view/nav.html" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/libs/angular-ui-router.js" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/view/StudentinfoManagement.html" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/router.js" />
+    <entry file="file://$PROJECT_DIR$/Student Information Management System/view/login.html" />
+  </component>
+</project>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>控制器scope父子级作用域详解（一）</title>
+    <script src="../libs/angular.min.js"></script>
+    <link rel="stylesheet" href="../libs/bootstrap.min.css">
+</head>
+<body>
+<div ng-app="App">
+    <div ng-controller="ctrl1">父控制器
+        {{name}}<input type="text" ng-model="name"><!--name属性为标量基本类型（传值）-->
+        <div ng-controller="ctrl2">子控制器
+            {{name}}<input type="text" ng-model="name">
+        </div>
+    </div>
+    <hr/>
+
+    <div ng-controller="ctrl1">父控制器
+        {{data.name}}<input type="text" ng-model="data.name"><!--data对象为引用类型（传址）-->
+        <div ng-controller="ctrl2">子控制器
+            {{data.name}}<input type="text" ng-model="data.name">
+        </div>
+    </div>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl1', ['$scope', function ($scope) {
+        $scope.name = 'lijiabin';
+        // 当控制器内部无name属性时，系统会自动隐式的在控制器内定义$scope.name='';
+        $scope.data = {name: 'lidongxu'};
+        // 当控制器内部无data对象时，系统不会自动隐式的在控制器内定义引用类型（对象）只会去父控制器找
+    }]);
+</script>
+</body>
+</html>

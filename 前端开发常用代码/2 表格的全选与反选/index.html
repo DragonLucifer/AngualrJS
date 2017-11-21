@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单的全选和反选</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<!--ng-app 指令用于告诉 AngularJS 应用当前这个元素是根元素。即:在ng-app所包含的范围内Angularjs生效-->
+<body ng-app="App">
+
+<!--表格以及内部元素定义-->
+<!--1.表格<table></table>-->
+<!--2.表头<th></th>-->
+<!--3.表格的行<tr></tr>-->
+<!--4.表格单元<td></td>-->
+<!--5.表格标题<caption></caption>-->
+<!--6.表格的列<col>-->
+<!--7.表格页眉<thead></thead>-->
+<!--8.表格主体<tbody></tbody>-->
+<!--9.表哥页脚<tfoot></tfoot>-->
+<table border="0" ng-controller="ctrl">
+    <!--控制器所包含的范围内数据共享-->
+    <tr>
+        <th>
+            <!--ng-model指令的作用是把输入型的元素（input，select，textarea等）和scope中的数据进行绑定，也可以用在自定义的form元素上。-->
+            <!--注意：ng-model指令需要和input、select等标签进行配合使用。-->
+            <!--ng-model用于数据双向绑定，其值可为字符串、true/false等。-->
+            <!--在本例中ng-model的值为boolean类型，选中checkbox时ng-model=true否则为false-->
+            <input type="checkbox" ng-model="all">
+
+            <!--<span> 标签用于对文档中的行内元素进行组合。提供了一种将文本的一部分或者文档的一部分独立出来的方式。-->
+            <!--<span> 没有固定的格式表现。当对它应用样式时，它才会产生视觉上的变化。-->
+            <!--如果不对 <span> 应用样式，那么 <span> 元素中的文本与其他文本不会任何视觉上的差异。-->
+            <span ng-bind="all?'全选':'取消'"></span>
+        </th>
+        <!--text-align: center;->文字居中-->
+        <th style="text-align: center">Name</th>
+        <th>Age</th>
+        <th>School</th>
+    </tr>
+
+    <!--ng-repeat 指令用于循环输出指定次数的 HTML 元素。-->
+    <!--注意:集合必须是数组或对象。-->
+    <!--<element ng-repeat="expression"></element>所有的 HTML 元素都支持该指令。-->
+    <tr ng-repeat="val in data">
+        <!--val为自定义变量名,用于html对数据的访问;data为在控制器ctrl的scope作用域内的数组或者对象-->
+        <td style="text-align: center">
+            <input type="checkbox" ng-checked="all">
+        </td>
+        <!--访问$scope.data数据的方法为自定义变量名.属性(如val.name)-->
+        <td style="text-align: center">{{val.name}}</td>
+        <td style="text-align: center">{{val.age}}</td>
+        <td style="text-align: center">{{val.school}}</td>
+    </tr>
+</table>
+<script>
+    /* module是angular中重要的模块组织方式，它提供了将一组内聚的业务组件（controller、service、filter、directive…）封装在一起的能力。
+     可以将代码按照业务领域问题分module的封装，然后利用module的依赖注入其关联的模块内容，使得我们能够更好的”分离关注点“，达到更好的”高内聚低耦合“
+     */
+    /* module是angular代码的入口。首先需要声明module，然后才能定义angular中的其他组件元素，如controller、service、filter、directive、
+     config代码块、run代码块等。
+     */
+
+    /*关于module的定义为：angular.module(‘com.ngbook.demo’, [])。关于module函数可以传递3个参数，它们分别为：
+     1.name：模块定义的名称，它应该是一个唯一的必选参数，它会在后边被其他模块注入或者是在ngAPP指令中声明应用程序主模块；
+     2.requires：模块的依赖，它是声明本模块需要依赖的其他模块的参数。特别注意：如果在这里没有声明模块的依赖，则我们是无法在模块中使用依赖模块的任何组件的；
+     它是个可选参数。
+     3.configFn： 模块的启动配置函数，在angular config阶段会调用该函数，对模块中的组件进行实例化对象实例之前的特定配置，如我们常见的对$routeProvider配置
+     应用程序的路由信息。它等同于”module.config“函数，建议用”module.config“函数替换它。这也是个可选参数。
+     */
+    // 注意：在应用程序中，对module的声明应该有且只有一次；对于获取module，则可以有多次。
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.data = [
+            // []表明数据为数组结构;
+            // {}表明数据为一个对象(即{name: 'lijiabin', age: '24', school: 'HRBU'}是一个对象Object,name、age、school均为属性)
+            {name: 'lijiabin', age: '24', school: 'HRBU'},
+            {name: 'lidongxu', age: '25', school: 'HRBU'},
+            {name: 'liyang', age: '22', school: 'TJU'}
+        ];
+    }]);
+</script>
+</body>
+
+</html>
+
+<!--表格实例-->
+<!--
+<table border="1">
+    <tr>
+        <th>Header 1</th>
+        <th>Header 2</th>
+    </tr>
+    <tr>
+        <td>row 1, cell 1</td>
+        <td>row 1, cell 2</td>
+    </tr>
+    <tr>
+        <td>row 2, cell 1</td>
+        <td>row 2, cell 2</td>
+    </tr>
+</table>
+-->

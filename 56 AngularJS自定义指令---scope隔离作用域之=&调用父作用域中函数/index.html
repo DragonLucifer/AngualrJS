@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scope隔离作用域之&调用父作用域中函数</title>
+    <script src="../libs/angular.min.js"></script>
+    <link rel="stylesheet" href="../libs/bootstrap.min.css">
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <!--在孤立作用域中通过对HTML属性的绑定从而引用了fun函数-->
+    <div my-directive fun="callback()"></div>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.callback = function () {
+            return 'lijiabin';
+        }
+    }]);
+    app.directive('myDirective', [function () {
+        return {
+            restrict: 'EA',
+            template: '<h1>{{fun()}}</h1>',
+            /*通过这种形式的绑定，孤立作用域将有能力访问到父作用域中的函数对象，从而能够执行父作用域中的函数来获取某些结果。
+             这种方式的绑定跟单向绑定一样，只能以只读的方式访问父作用函数，并且这个函数的定义必须写在父作用域HTML中的attr（属性）节点上。
+             */
+            scope: {fun: '&'}// & 表明指令调用控制器中父作用域中函数
+        }
+    }]);
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-repeat_Array</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    <ul>
+        <!--ng-repeat 指令用于（遍历数组、对象）循环输出指定次数的 HTML 元素。注意集合必须是数组或对象。-->
+        <!--当集合为数组时，{{value}}可直接取得数据；当集合为对象时，{{value.。。。}}可取得对应数据（原因：{{对象.属性}}取得属性值）-->
+        <li ng-repeat="value in data">
+            姓名：{{value.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年龄：{{value.age}}
+        </li>
+        <br/>
+
+        <!--????????
+             <li ng-repeat="(value,key) in data">
+             输出结果为：
+             {"name":"lijiabin","age":"24"}姓名：     年龄：
+             {"name":"lidongxu","age":"25"}姓名：     年龄：
+             {"name":"liyang","age":"22"}姓名：     年龄：
+             {"name":"limingxun","age":"24"}姓名：     年龄：
+
+             <li ng-repeat="(key，value) in data">
+             输出结果为：
+             0  姓名：lijiabin     年龄：24
+             1  姓名：lidongxu     年龄：25
+             2  姓名：liyang     年龄：22
+             3  姓名：limingxun     年龄：24
+        -->
+
+        <!--重要：在AngularJS中可以写表达式-->
+        <!--重要：在AngularJS中可以写表达式-->
+        <!--重要：在AngularJS中可以写表达式-->
+        <li ng-repeat="(key,value) in data" style="{{key==0?'color:red':''}}">
+            {{$first}}<!--$first该对象是否为数组中的第一个对象（true/false）-->
+            {{key}}&nbsp;&nbsp;姓名：{{value.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年龄：{{value.age}}
+        </li>
+        <br/>
+        <hr/>
+
+        <!--{{$first}}$first为数组中的第一个对象（返回值true/false）
+            {{$last}}$last为数组中的最后一个对象（返回值true/false）
+            {{$middle}}$middle为数组中中间的对象（返回值true/false）
+            {{$even}}$first为数组中对象（序号）为偶数（返回值true/false）
+            {{$odd}}$odd为数组中对象（序号）为奇数（返回值true/false）
+        -->
+        <li ng-repeat="(key,value) in data">
+            <span ng-if="$first" style="{{$first?'color:red':''}}">{{key}}&nbsp;&nbsp;姓名：{{value.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年龄：{{value.age}}</span>
+            <span ng-if="$middle">{{key}}&nbsp;&nbsp;姓名：{{value.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年龄：{{value.age}}</span>
+            <span ng-if="$last" style="{{$last?'color:green':''}}">{{key}}&nbsp;&nbsp;姓名：{{value.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年龄：{{value.age}}</span>
+        </li>
+
+    </ul>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.data = [
+            {name: 'lijiabin', age: '24'},
+            {name: 'lidongxu', age: '25'},
+            {name: 'liyang', age: '22'},
+            {name: 'limingxun', age: '24'}
+        ];
+    }]);
+</script>
+</body>
+</html>

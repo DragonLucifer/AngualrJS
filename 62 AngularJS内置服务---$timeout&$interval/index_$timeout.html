@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$timeout定时器</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    {{name}}
+</div>
+<script>
+    var app = angular.module('App', []);
+    /*
+    app.controller('ctrl', ['$scope', function ($scope) {
+        $scope.name = 'lijiabin';
+
+        // 重要:原生JS不能够触发AngularJS进行数据同步更新
+        setTimeout(function () {
+            $scope.name = 'lidongxu';
+            // /!*解决方法
+            $scope.$apply();
+        }, 2000);
+    }]);
+    */
+
+    /*
+     $timeout(fn,[delay],[invokeApply]);
+     fn：一个将被延迟执行的函数。
+     delay：延迟的时间（毫秒）。
+     invokeApply：如果设置为false，则跳过脏值检测，否则将调用$apply。
+     */
+
+    // AngularJS内置服务
+    // 注意:将服务依赖注入到控制器中,服务于控制器
+    app.controller('ctrl', ['$scope', '$timeout', function ($scope, $timeout) {
+        var timeID = $timeout(function () {
+            $scope.name = 'lidongxu';
+        }, 2000);
+        // 2s之后执行函数（函数只执行一次）
+
+        $timeout.cancel(timeID);// 取消定时服务（每一个定时器都有唯一的ID）
+    }]);
+</script>
+</body>
+</html>

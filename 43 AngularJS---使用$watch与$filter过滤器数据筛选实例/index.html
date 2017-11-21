@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用$watch与$filter过滤器数据筛选实例</title>
+    <script src="../libs/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="App" ng-controller="ctrl">
+    搜索:<input type="text" ng-model="search">
+    <table border="1" width="600">
+        <tr>
+            <td style="text-align: center">编号<span class="caret"></span></td>
+            <td style="text-align: center">点击数<span class="caret"></span></td>
+            <td style="text-align: center">标题<span class="caret"></span></td>
+        </tr>
+        <tr ng-repeat="(key,value) in temp_data">
+            <td style="text-align: center">{{value.id}}</td>
+            <td style="text-align: center">{{value.click}}</td>
+            <td style="text-align: center">{{value.title}}</td>
+        </tr>
+    </table>
+</div>
+<script>
+    var app = angular.module('App', []);
+    app.controller('ctrl', ['$scope', '$filter', function ($scope, $filter) {
+        $scope.data = [
+            {id: 1, click: 100, title: 'HRBU'},
+            {id: 2, click: 200, title: 'HRBUST'},
+            {id: 3, click: 300, title: 'HIT'}
+        ];
+
+        $scope.$watch('search', function (newValue, oldValue) {
+            /*
+             此方法错误 错误原因:数据筛选正常，但当搜索框为空时数据无法恢复成之前的状态（数据全部显示），遭到破坏
+             $scope.data=$filter('filter')($scope.data,newValue);
+             */
+            // temp_data临时数据用于显示。重要：不能将$scope.data进行更改
+            $scope.temp_data = $scope.data;
+            $scope.temp_data = $filter('filter')($scope.data, newValue);
+        });
+    }]);
+</script>
+</body>
+</html>
